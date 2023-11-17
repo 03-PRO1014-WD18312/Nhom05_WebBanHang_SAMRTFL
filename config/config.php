@@ -10,8 +10,8 @@ const _ACTION_DEFAULT = 'lists';
 const _MODULE_DEFAULT_ADMIN = 'dashboard';
 const _ACTION_DEFAULT_ADMIN = 'lists'; 
 
-define('_WEB_HOST_ROOT', 'http://'.$_SERVER['HTTP_HOST'].'/-project_1');
-define('_WEB_HOST_ROOT_ADMIN', 'http://'.$_SERVER['HTTP_HOST'].'/-project_1/admin');
+define('_WEB_HOST_ROOT', 'http://'.$_SERVER['HTTP_HOST'].'/-Nhom05_WebBanHang_SAMRTFL');
+define('_WEB_HOST_ROOT_ADMIN', 'http://'.$_SERVER['HTTP_HOST'].'/-Nhom05_WebBanHang_SAMRTFL/admin');
 
 define('_WEB_HOST_ERORR', _WEB_HOST_ROOT.'/public/error');
 
