@@ -43,7 +43,7 @@ if(!empty($body['view'])){
 
 <div>
 
-    <h5>Danh sách Loại Blog</h5>
+    <h5>Danh sách Loại bài viết</h5>
     <hr>
 
     <form action="" method="get" class="">

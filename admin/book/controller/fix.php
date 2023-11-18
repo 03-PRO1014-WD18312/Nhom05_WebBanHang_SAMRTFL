@@ -1,7 +1,7 @@
 <?php
 
 $data = [
-    'titlePage' => 'Sửa Book'
+    'titlePage' => 'Sửa sách'
 ];
 
 layout('header', 'admin', $data);

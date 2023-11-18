@@ -1,7 +1,7 @@
 <?php
 
 $data = [
-    'titlePage' => 'Category Blog'
+    'titlePage' => 'Danh mục bài viết'
 ];
 
 layout('header', 'admin', $data);

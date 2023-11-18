@@ -1,7 +1,7 @@
 <?php
 
 $data = [
-    'titlePage' => 'Thêm Course'
+    'titlePage' => 'Thêm khóa học'
 ];
 
 layout('header', 'admin', $data);

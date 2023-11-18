@@ -69,7 +69,7 @@ if(empty($old)){
 ?>
 
 
-<h5>Sửa loại Course</h5>
+<h5>Sửa loại khóa học</h5>
 <hr>
 <?php getAlert($msg, $type); ?>
 <form action="" method="post">
