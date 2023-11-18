@@ -45,7 +45,7 @@ $old = getFlashData('old');
 ?>
 
 
-<h5>Thêm loại blog</h5>
+<h5>Thêm loại bài viết</h5>
 <hr>
 <?php getAlert($msg, $type); ?>
 <form action="" method="post">

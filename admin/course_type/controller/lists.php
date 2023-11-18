@@ -1,7 +1,7 @@
 <?php
 
 $data = [
-    'titlePage' => 'Category Course'
+    'titlePage' => 'Danh mục khóa học'
 ];
 
 layout('header', 'admin', $data);
