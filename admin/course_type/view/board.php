@@ -41,7 +41,7 @@ if(!empty($body['view'])){
 
 <div>
 
-    <h5>Danh sách Loại Course</h5>
+    <h5>Danh sách Loại khóa học</h5>
     <hr>
 
     <form action="" method="get" class="">

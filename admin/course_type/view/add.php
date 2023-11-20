@@ -45,7 +45,7 @@ $old = getFlashData('old');
 ?>
 
 
-<h5>Thêm loại Course</h5>
+<h5>Thêm loại khóa học</h5>
 <hr>
 <?php getAlert($msg, $type); ?>
 <form action="" method="post">

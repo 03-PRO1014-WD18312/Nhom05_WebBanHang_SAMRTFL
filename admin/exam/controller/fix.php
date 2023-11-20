@@ -1,7 +1,7 @@
 <?php
 
 $data = [
-    'titlePage' => 'Fix Exam'
+    'titlePage' => 'Sửa bài kiểm tra'
 ];
 
 layout('header', 'admin', $data);
