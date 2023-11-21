@@ -25,12 +25,6 @@ if(!empty($body['book_type_id'])){
     $urlFilter .= "&book_type_id=$book_type_id";
 }
 
-// echo $filter;
-
-// echo '<br>';
-// // echo $urlFilter;
-
-// die();
 
 
 
@@ -70,7 +64,7 @@ $type = getFlashData('type');
                     if(!empty($allBookType)):
                         foreach ($allBookType as $key => $value):
                 ?>
-                <option <?php echo !empty($book_type) && $book_type == $value['id']?'selected':''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['name'].' - '.$value['id']; ?></option>
+                <option <?php echo !empty($book_type_id) && $book_type_id == $value['id']?'selected':''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['name'].' - '.$value['id']; ?></option>
                 <?php endforeach; endif; ?>
             </select>
         </div>
@@ -86,7 +80,7 @@ $type = getFlashData('type');
         <thead>
             <tr>
                 <th width="5%" class="board_th">STT</th>
-                <th width="15%" class="board_th">Tiêu đề</th>
+                <th width="10%" class="board_th">Tiêu đề</th>
                 <th width="15%" class="board_th">Ảnh</th>
                 <th width="10%" class="board_th">Loại sách</th>
                 <th width="30%" class="board_th">Mô tả</th>
