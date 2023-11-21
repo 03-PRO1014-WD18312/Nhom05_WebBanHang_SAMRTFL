@@ -47,6 +47,17 @@ if (is_Post()) {
             'content' => $data['content'],
             'update_at' => date('Y-m-d H:i:s')
         ];
+        if (!empty($_FILES['image']['name'])) {
+            $image = $_FILES['image'];
+            $nameImage = time() . '_' . $image['name'];
+            $toFile =  _WEB_PATH_IMAGE_CLIENT . '/' . $nameImage;
+            // chỉ xóa khi update
+            if (file_exists(_WEB_PATH_IMAGE_CLIENT . '/' . $detailCourse['image'])) {
+                $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT . '/' . $detailCourse['image']);
+            }
+            move_uploaded_file($image['tmp_name'], $toFile);
+            $dataUpdate['image'] = $nameImage;
+        }
 
         if (update('blog', $dataUpdate, "id='$id'")) {
             setFlashData('msg', 'Sửa thành công !!!');
@@ -79,50 +90,52 @@ if (empty($old)) {
 
 <div class="container_my">
 
-<?php getAlert($msg, $type); ?>
+    <?php getAlert($msg, $type); ?>
 
-<form class="row m-0" method="post">
+    <form class="row m-0" method="post" enctype="multipart/form-data">
 
-    <div class="form-group col-12">
-        <label for="blogInputtitle">Title</label>
-        <input type="title" name="title" class="form-control" id="blogInputtitle" value="<?php echo !empty($old['title']) ? $old['title'] : ''; ?>">
-        <span class="text-danger"><?php echo !empty($errors['title']) ? $errors['title'] : ''; ?></span>
-    </div>
+        <div class="form-group col-12">
+            <label for="blogInputtitle">Title</label>
+            <input type="title" name="title" class="form-control" id="blogInputtitle" value="<?php echo !empty($old['title']) ? $old['title'] : ''; ?>">
+            <span class="text-danger"><?php echo !empty($errors['title']) ? $errors['title'] : ''; ?></span>
+        </div>
+        <div class="form-group col-12">
+            <label for="">Ảnh</label>
+            <input type="file" name="image" class="form-control">
+            <!-- <?php echo !empty($errors['title']) ? formError($errors['title']) : ''; ?> -->
+        </div>
+        <div class="form-group col-12">
+            <label for="blogInputId-blog_type">Danh mục bài viết</label>
+            <select class="custom-select" name="blog_type_id" id="inputGroupSelect01">
+                <option value="0">Chọn</option>
+                <?php
+                if (!empty($allBlogType)) {
+                    foreach ($allBlogType as $key => $type) {
+                ?>
+                        <option <?php echo (!empty($old['blog_type_id']) && $old['blog_type_id'] == $type['id']) ? 'selected' : ''; ?> value="<?php echo $type['id']; ?>"><?php echo $type['name'] . ' - ' . $type['id']; ?></option>
+                <?php
+                    }
+                };
+                ?>
+
+            </select>
+            <span class="text-danger"><?php echo !empty($errors['blog_type_id']) ? $errors['blog_type_id'] : ''; ?></span>
+
+        </div>
+
+        <div class="form-group col-12">
+            <label for="blogInputcontent">Content</label>
+            <textarea class="form-control ckediter" name="content" id="blogInputcontent" rows=""><?php echo !empty($old['content']) ? $old['content'] : ''; ?></textarea>
+            <span class="text-danger"><?php echo !empty($errors['content']) ? $errors['content'] : ''; ?></span>
+        </div>
+
+        <div class="form-group col-12">
+            <button type="submit" class="btn btn-primary w-100">Sửa</button>
+        </div>
+        <br>
+        <a href="?module=<?php echo $module; ?>" class="btn btn-success mb-3">Danh sách</a>
 
 
-    <div class="form-group col-12">
-        <label for="blogInputId-blog_type">Danh mục bài viết</label>
-        <select class="custom-select" name="blog_type_id" id="inputGroupSelect01">
-            <option value="0">Chọn</option>
-            <?php
-            if (!empty($allBlogType)) {
-                foreach ($allBlogType as $key => $type) {
-            ?>
-                    <option <?php echo (!empty($old['blog_type_id']) && $old['blog_type_id'] == $type['id']) ? 'selected' : ''; ?> value="<?php echo $type['id']; ?>"><?php echo $type['name'] . ' - ' . $type['id']; ?></option>
-            <?php
-                }
-            };
-            ?>
-
-        </select>
-        <span class="text-danger"><?php echo !empty($errors['blog_type_id']) ? $errors['blog_type_id'] : ''; ?></span>
-
-    </div>
-
-    <div class="form-group col-12">
-        <label for="blogInputcontent">Content</label>
-        <textarea class="form-control ckediter" name="content" id="blogInputcontent" rows=""><?php echo !empty($old['content']) ? $old['content'] : ''; ?></textarea>
-        <span class="text-danger"><?php echo !empty($errors['content']) ? $errors['content'] : ''; ?></span>
-    </div>
-
-    <div class="form-group col-12">
-        <button type="submit" class="btn btn-primary w-100">Sửa</button>
-    </div>
-    <br>
-    <a href="?module=<?php echo $module; ?>" class="btn btn-success mb-3">Danh sách</a>
-
-
-</form>
+    </form>
 
 </div>
-

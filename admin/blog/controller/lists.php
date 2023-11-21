@@ -1,6 +1,7 @@
 <?php
 
 $data = [
+    
     'titlePage' => 'Danh sách bài viết'
 ];
 

@@ -1,5 +1,6 @@
 <?php
 
+
 $body = getRequest('get');
 
 if(!empty($body['id'])){
