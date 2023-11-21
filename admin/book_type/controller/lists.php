@@ -1,7 +1,7 @@
 <?php
 
 $data = [
-    'titlePage' => 'Dang mục sách'
+    'titlePage' => 'Danh mục sách'
 ];
 
 
