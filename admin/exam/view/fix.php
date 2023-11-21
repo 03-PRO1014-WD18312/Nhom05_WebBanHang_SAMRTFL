@@ -98,6 +98,18 @@ if(is_Post()){
             'update_at' => date('Y-m-d H:i:s'),
         ];
 
+        if(!empty($_FILES['image']['name'])){   
+            $image = $_FILES['image'];
+            $nameImage = time().'_'.$image['name'];
+            $toFile =  _WEB_PATH_IMAGE_CLIENT.'/'.$nameImage;
+            // chỉ xóa khi update
+            if(file_exists(_WEB_PATH_IMAGE_CLIENT.'/'.$detailExam['image'])){
+            $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT.'/'.$detailExam['image']);
+            }            
+            move_uploaded_file($image['tmp_name'], $toFile);
+            $dataUpdate['image'] = $nameImage;
+        }
+
         if(update('exam', $dataUpdate, "id='$id'")){
             setFlashData('msg', 'Sửa mới thành công !!!');
             setFlashData('type', 'success');
@@ -130,12 +142,18 @@ if(empty($old)) $old = $detailExam
 
     <?php getAlert($msg, $type); ?>
 
-    <form action="" method="post" class="row mx-0">
+    <form action="" method="post" class="row mx-0" enctype="multipart/form-data">
 
     <div class="form-group col-12">
     <label for="">Tiêu đề</label>
     <input type="text" name="title" value="<?php echo !empty($old['title'])?$old['title']:''; ?>" class="form-control">   
     <?php !empty($errors['title'])?formError($errors['title']):''; ?>
+    </div>
+
+    <div class="form-group col-12">
+            <label for="">Ảnh</label>
+            <input type="file" name="image" class="form-control"> 
+            <!-- <?php echo !empty($errors['title'])?formError($errors['title']):''; ?> -->
     </div>
 
     <div class="form-group col-6">
