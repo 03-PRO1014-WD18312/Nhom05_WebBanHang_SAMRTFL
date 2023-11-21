@@ -1,5 +1,6 @@
 <?php
 
+
 $data = [
     'titlePage' => 'Thêm bài viết'
 ];

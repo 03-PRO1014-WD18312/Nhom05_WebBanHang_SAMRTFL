@@ -1,6 +1,4 @@
 <?php
-
-
 $numberBlog = getCountRows("SELECT b.id FROM blog AS b INNER JOIN blog_type AS t ON b.blog_type_id=t.id INNER JOIN user AS u ON b.author_id=u.id $filter");
 
 $totalPage = ceil($numberBlog / _PAGE);
