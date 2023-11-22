@@ -3,7 +3,6 @@
 <h3 class="text-center">Đánh giá của học sinh</h3>
 <br>
 
-
 <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
