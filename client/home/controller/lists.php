@@ -20,7 +20,7 @@ view('course', 'client');
 
 // view('tearch_hot', 'client');
 
-view('evaluate', 'client');
+// view('evaluate', 'client');
 
 view('blog', 'client');
 
