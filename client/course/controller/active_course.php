@@ -9,42 +9,36 @@ if(is_Post()){
 
         $user_id = $data['user_id'];
         $course_id = $data['course_id'];
+        $active = $data['active'];
 
-        $detailActiveCourse = getRow("SELECT id FROM active_course WHERE user_id='$user_id' AND course_id='$course_id'");
+        $detailActiveCourse = getRow("SELECT id FROM my_course WHERE user_id='$user_id' AND course_id='$course_id' AND active='$active'");
         if(!empty($detailActiveCourse)){
             $dataUpdate = [
                 'status' => 1
             ];
-            if(update('active_course', $dataUpdate, "user_id='$user_id' AND course_id='$course_id'")){
+            if(update('my_course', $dataUpdate, "user_id='$user_id' AND course_id='$course_id'")){
                 setFlashData('msg', 'Kích hoạt khóa học thành công !!!');
-                setFlashData('type', 'danger');
-                redirect(_WEB_HOST_ROOT."/?module=course&action=detail_course&course_id=$course_id");
+                setFlashData('type', 'success');
             }else{
                 setFlashData('msg', 'Kích hoạt khóa học thất bại !!!');
                 setFlashData('type', 'danger');
-                redirect(_WEB_HOST_ROOT);
             }
+        }else{
+            setFlashData('msg', 'Kích hoạt khóa học thất bại !!!');
+            setFlashData('type', 'danger');
         }
     }else{
         setFlashData('msg', 'Kích hoạt khóa học thất bại !!!');
         setFlashData('type', 'danger');
-        redirect(_WEB_HOST_ROOT);
     }
 
 
 }else{
     setFlashData('msg', 'Kích hoạt khóa học thất bại !!!');
     setFlashData('type', 'danger');
-    redirect(_WEB_HOST_ROOT);
 }
 
-
-
-
-
-
-
-
+redirect($_SERVER['HTTP_REFERER']);
 
 
 ?>

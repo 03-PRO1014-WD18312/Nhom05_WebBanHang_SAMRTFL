@@ -3,11 +3,11 @@ function runCodejs(){
 
     qr();
 
-    if(time_over_exam != null && time_now_exam != null){
-        completeExam();
-    }
+    // if(time_over_exam != null && time_now_exam != null){
+    //     completeExam();
+    // }
 
-    // showExercise(); 
+    showExercise(); 
 
 }
 
@@ -65,7 +65,6 @@ function qr(){
                 generate.click();
         }, 1000);
 
-        
         function isEmptyInput(){
             qrText.value.length>0?generateQRCode():'';
         }
