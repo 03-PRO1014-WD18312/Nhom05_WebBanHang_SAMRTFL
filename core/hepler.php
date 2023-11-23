@@ -295,4 +295,38 @@ function getTypeTime($time='', $future=''){
 
 }
 
+function isLogin(){
+
+    $check = false;
+
+    if(!empty(getSession('loginToken'))){
+
+        $token = getSession('loginToken');
+    
+        $checkToken = getRow("SELECT * FROM login_token WHERE token='$token'");
+    
+        if($checkToken){
+            $check = $checkToken;
+        }else{
+            removeSession('loginToken');
+        }
+    
+    }
+
+    return $check;
+
+}
+
+function getTimeFormat($strTime, $format){
+
+    $dataObject = date_create($strTime);
+
+    if(!empty($dataObject)){
+        return date_format($dataObject, $format);
+    }
+
+    return false;
+
+}
+
 ?>

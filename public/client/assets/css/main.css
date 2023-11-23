@@ -198,16 +198,12 @@ h1, h2, h3, h4, h5, h6, p{
 
 .ex_course ul{
     display: none;  
-
-    height: 0px;
-    /* transition: all 2s; */
-    transition: height 2s ease-in;
 }
 
-.ex_course:hover ul{
+/* .ex_course:hover ul{
     display: block;
     height: auto;
-}
+} */
 
 .detail_course_content_right .course_kind{
     display: grid;

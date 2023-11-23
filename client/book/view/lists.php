@@ -8,17 +8,14 @@ $urlFilter = '';
 
 if(!empty($body['keywork'])){
     $keywork = $body['keywork'];
-    $filter .= " WHERE `title` LIKE '%$keywork%' ";
+    $filter .= " AND `title` LIKE '%$keywork%' ";
 }
 
 if(!empty($body['book_type'])){
     $book_type = $body['book_type'];
 
-    if(!empty($filter)){
-        $filter .= " AND `book_type_id` = '$book_type' ";
-    }else{
-        $filter .= " WHERE `book_type_id` = '$book_type' ";        
-    }
+    $filter .= " AND `book_type_id` = '$book_type' ";
+
 }
 
 require _WEB_PATH_ROOT.'/client/book/model/lists.php';
@@ -69,10 +66,11 @@ if (!empty($allBook)):
 
 <a href="<?php echo "?module=book&action=detail_book&id=".$value['id'];?>"><img class="w-75 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
 
-<h6><?php echo $value['title'];?></h6>
+<h6><a href="<?php echo "?module=book&action=detail_book&id=".$value['id'];?>" class="text-decoration-none"><?php echo $value['title'];?></a></h6>
+<p>Loại: <?php echo $value['t_name']; ?></p>
 
-<div class="sub_item_course mt-3">
-    <h6 style="text-align"><?php echo $value['price'];?>VND</h6>
+<div class=" mt-3">
+    <h6 style="text-align: end;" class="text-warning"><?php echo $value['price'];?> VND</h6>
 </div>
 
 </div>

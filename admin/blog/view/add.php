@@ -37,7 +37,7 @@
                 'create_at' => date('Y-m-d H:i:s'),
             ];
             if (!empty($_FILES['image']['name'])) {
-                $image = $_FILES['image'];
+                $image = $_FILES['image'];  
                 $nameImage = time() . '_' . $image['name'];
                 $toFile =  _WEB_PATH_IMAGE_CLIENT . '/' . $nameImage;
                 // chỉ xóa khi update
@@ -88,10 +88,12 @@
               <input type="title" name="title" class="form-control" id="blogInputtitle" value="<?php echo !empty($old['title']) ? $old['title'] : ''; ?>">
               <span class="text-danger"><?php echo !empty($errors['title']) ? $errors['title'] : ''; ?></span>
           </div>
+
           <div class="form-group col-12">
-              <label for="">Ảnh</label>
-              <input type="file" name="image" class="form-control">
-          </div>
+            <label for="">Ảnh</label>
+            <input type="file" name="image" class="form-control"> 
+            <!-- <?php echo !empty($errors['title'])?formError($errors['title']):''; ?> -->
+            </div>
 
 
           <div class="form-group col-12">

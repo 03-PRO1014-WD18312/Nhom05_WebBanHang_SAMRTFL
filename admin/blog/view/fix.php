@@ -52,8 +52,8 @@ if (is_Post()) {
             $nameImage = time() . '_' . $image['name'];
             $toFile =  _WEB_PATH_IMAGE_CLIENT . '/' . $nameImage;
             // chỉ xóa khi update
-            if (file_exists(_WEB_PATH_IMAGE_CLIENT . '/' . $detailCourse['image'])) {
-                $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT . '/' . $detailCourse['image']);
+            if (file_exists(_WEB_PATH_IMAGE_CLIENT . '/' . $detailBlog['image'])) {
+                $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT . '/' . $detailBlog['image']);
             }
             move_uploaded_file($image['tmp_name'], $toFile);
             $dataUpdate['image'] = $nameImage;
@@ -101,9 +101,9 @@ if (empty($old)) {
         </div>
         <div class="form-group col-12">
             <label for="">Ảnh</label>
-            <input type="file" name="image" class="form-control">
-            <!-- <?php echo !empty($errors['title']) ? formError($errors['title']) : ''; ?> -->
-        </div>
+            <input type="file" name="image" class="form-control"> 
+            <!-- <?php echo !empty($errors['title'])?formError($errors['title']):''; ?> -->
+    </div>
         <div class="form-group col-12">
             <label for="blogInputId-blog_type">Danh mục bài viết</label>
             <select class="custom-select" name="blog_type_id" id="inputGroupSelect01">
