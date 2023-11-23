@@ -57,7 +57,7 @@ if(!empty($body['action'])){
             <a href="" class="btn btn-primary flex_center">
                 Làm bài thi
             </a>
-            <a href="" class="btn btn-warning flex_center">
+            <a href="?module=profile&action=course" class="btn btn-warning flex_center">
                 Vào học
             </a>
         </div>
