@@ -104,7 +104,7 @@ $old = getFlashData('old');
         <?php !empty($errors['password'])?formError($errors['password']):''; ?>
     </div>
 
-    <a href="" class="d-block w-100 text-center mb-3">Quên mật khẩu</a>
+    <a href="?module=auth&action=forgot" class="d-block w-100 text-center mb-3">Quên mật khẩu</a>
 
     <div class="form-group">
     <input type="submit" value="Đăng nhập ngay" class="btn btn-danger w-100">
