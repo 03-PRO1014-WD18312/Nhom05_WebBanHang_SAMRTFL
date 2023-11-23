@@ -117,7 +117,7 @@ $old = getFlashData('old');
 
 
 
-    <p class="text-center">Bạn chưa có tài khoản? <a href="">Đăng ký ngay</a></p>
+    <p class="text-center">Bạn chưa có tài khoản? <a href="?module=auth&action=register">Đăng ký ngay</a></p>
 
 </div>
 
