@@ -64,8 +64,8 @@ if(is_Post()){
             $nameImage = time().'_'.$image['name'];
             $toFile =  _WEB_PATH_IMAGE_CLIENT.'/'.$nameImage;
             // chỉ xóa khi update
-            if(file_exists(_WEB_PATH_IMAGE_CLIENT.'/'.$detailCourse['image'])){
-            $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT.'/'.$detailCourse['image']);
+            if(file_exists(_WEB_PATH_IMAGE_CLIENT.'/'.$detailBook['image'])){
+            $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT.'/'.$detailBook['image']);
             }            
             move_uploaded_file($image['tmp_name'], $toFile);
             $dataUpdate['image'] = $nameImage;

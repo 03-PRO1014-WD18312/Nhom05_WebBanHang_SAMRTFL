@@ -98,7 +98,8 @@ $type = getFlashData('type');
         <thead>
             <tr>
                 <th width="5%" class="board_th">STT</th>
-                <th class="board_th">Thông tin</th>
+                <th width="15%" class="board_th">Thông tin</th>
+                <th width="15%" class="board_th">Ảnh</th>
                 <th width="5%" class="board_th">Loại exam</th>
                 <th width="10%" class="board_th">Người đăng</th>
                 <th width="15%" class="board_th">Giờ bán</th>
@@ -123,6 +124,7 @@ $type = getFlashData('type');
                     <span>Tiêu đề: <a href="?module=question_exam&exam_id=<?php echo $item['id']; ?>"><?php echo $item['title']; ?></a></span> <br>
                     <span>Giá bán: <?php echo $item['price']; ?> VND</span> <br>
                 </td>
+                <td class="board_td text-center"><img width="90%" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$item['image']; ?>" alt=""></td>
                 <td class="board_td text-center"><?php echo $item['t_name']; ?></a></td>
                 <td class="board_td text-center"><?php echo $item['u_name']; ?></a></td>
                 <td class="board_td ">

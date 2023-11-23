@@ -24,7 +24,7 @@ view('course', 'client');
 
 view('blog', 'client');
 
-// view('register_tc', 'client');
+view('register_tc', 'client');
 
 
 ?>

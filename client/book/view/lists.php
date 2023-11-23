@@ -6,33 +6,17 @@ $count = 0;
 $filter = '';
 $urlFilter = '';
 
-// if(!empty($body['keywork'])){
-//     $keywork = $body['keywork'];
-//     $filter .= " WHERE `title` LIKE '%$keywork%' ";
-//     $urlFilter .= "&keywork=$keywork";
-// }
+if(!empty($body['keywork'])){
+    $keywork = $body['keywork'];
+    $filter .= " AND `title` LIKE '%$keywork%' ";
+}
 
-// if(!empty($body['course_type'])){
-//     $course_type = $body['course_type'];
+if(!empty($body['book_type'])){
+    $book_type = $body['book_type'];
 
-//     if(!empty($filter)){
-//         $filter .= " AND `course_type_id` = '$course_type' ";
-//     }else{
-//         $filter .= " WHERE `course_type_id` = '$course_type' ";        
-//     }
-//     $urlFilter .= "&course_type=$course_type";
-// }
+    $filter .= " AND `book_type_id` = '$book_type' ";
 
-// if(!empty($body['author_id'])){
-//     $author_id = $body['author_id'];
-
-//     if(!empty($filter)){
-//         $filter .= " AND `author_id` = '$author_id' ";
-//     }else{
-//         $filter .= " WHERE `author_id` = '$author_id' ";        
-//     }
-//     $urlFilter .= "&author_id=$author_id";
-// }
+}
 
 require _WEB_PATH_ROOT.'/client/book/model/lists.php';
 
@@ -50,13 +34,13 @@ require _WEB_PATH_ROOT.'/client/book/model/lists.php';
 </div>
 
 <div class="form-group my-0 col-3">
-    <select name="course_type" class="form-control">
+    <select name="book_type" class="form-control">
         <option value="">Chọn</option>
         <?php
             if(!empty($allBookType)):
                 foreach ($allBookType as $key => $value):
         ?>
-        <option <?php echo !empty($course_type) && $course_type == $value['id']?'selected':''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['name'].' - '.$value['id']; ?></option>
+        <option <?php echo !empty($book_type) && $book_type == $value['id']?'selected':''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['name'].' - '.$value['id']; ?></option>
         <?php endforeach; endif; ?>
     </select>
 </div>
@@ -70,62 +54,35 @@ require _WEB_PATH_ROOT.'/client/book/model/lists.php';
 </div>
 
 <br>
-
+<?php 
+if (!empty($allBook)):
+?>
 
 <div class="course_home">
-
+<?php
+    foreach ($allBook as $key => $value):
+    ?>
 <div class="item_course border">
 
-<img class="w-75 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/book.png'; ?>" alt="">
+<a href="<?php echo "?module=book&action=detail_book&id=".$value['id'];?>"><img class="w-75 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
 
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
+<h6><a href="<?php echo "?module=book&action=detail_book&id=".$value['id'];?>" class="text-decoration-none"><?php echo $value['title'];?></a></h6>
+<p>Loại: <?php echo $value['t_name']; ?></p>
 
-<div class="sub_item_course mt-3">
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
+<div class=" mt-3">
+    <h6 style="text-align: end;" class="text-warning"><?php echo $value['price'];?> VND</h6>
 </div>
 
 </div>
 
-<div class="item_course border">
-
-<img class="w-75 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/book.png'; ?>" alt="">
-
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
-
-<div class="sub_item_course mt-3">
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
-</div>
+<?php endforeach;
+?>
 
 </div>
-
-<div class="item_course border">
-
-<img class="w-75 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/book.png'; ?>" alt="">
-
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
-
-<div class="sub_item_course mt-3">
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
-</div>
-
-</div>
-
-
-<div class="item_course border">
-
-<img class="w-75 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/book.png'; ?>" alt="">
-
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
-
-<div class="sub_item_course mt-3">
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
-</div>
-
-</div>
-
-
-</div>
+<?php
+    else:
+?>
+    <h2 class="text-center text-danger">Không có dữ liệu</h2>
+<?php
+endif;
+?>
