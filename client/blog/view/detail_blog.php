@@ -5,7 +5,7 @@ if (!empty($body['id'])) {
 
     $id = $body['id'];
 
-    $detailBlog = getRow("SELECT * FROM blog WHERE id='$id' AND `status`<>'1'");
+    $detailBlog = getRow("SELECT * FROM blog WHERE id='$id' AND `status`<>'0'");
 
     if (!empty($detailBlog)) {
     } else {
@@ -24,10 +24,19 @@ if (!empty($body['id'])) {
     <hr>
     <div class="">
         <?php
-        echo html_entity_decode($detailBlog['content']);
+            echo html_entity_decode($detailBlog['content']);
         ?>
 
     </div>
 
+<?php 
 
+$data = [
+    'blog_type' => $detailBlog['blog_type_id'],
+    'blog_id' => $detailBlog['id']
+];
+
+view('blog_like', 'client', 'blog', $data);
+?> 
 </div>
+

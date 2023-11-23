@@ -13,16 +13,16 @@
 
     <link rel="stylesheet" href="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/css/main.css?ver='.rand(); ?>">
 
-    <title>Trang chủ</title>
+    <title><?php echo !empty($data['titlePage'])?$data['titlePage']:''; ?></title>
 
 </head>
 
 <?php
 
-if(true){
-
-  define('_MY_DATA', ['id'=>1]);
-
+if(isLogin()){
+    $user_id = isLogin()['user_id'];
+    $dataUser = getRow("SELECT * FROM user WHERE id='$user_id'");
+    define('_MY_DATA', $dataUser);
 }
 
 $body = getRequest('get');
@@ -41,7 +41,6 @@ if(!empty($body['action'])){
 <!-- <body class="d-none"> -->
 
 <div class="<?php echo (!empty($module) && getActive('make_exam') && !getAction(['finish']))?'d-none':''; ?>">
-
 
     <header class="box_header padding_X">
 
@@ -64,12 +63,18 @@ if(!empty($body['action'])){
         </div>
 
         <div class="my_header d-flex justify-content-around">
-            <a href="" class="btn btn-outline-primary flex_center">
+            <a href="?module=cart" class="btn btn-outline-primary flex_center">
                 <i class="fa fa-cart-plus"></i>
             </a>
-            <a href=""  class="btn btn-outline-warning flex_center">
+            <?php if(!isLogin()): ?>
+            <a href="?module=auth&action=login"  class="btn btn-outline-warning flex_center">
                 <i class="fa fa-user-circle"></i>
             </a>
+            <?php else: ?>
+            <a href="?module=profile"  class="btn btn-outline-warning flex_center">
+                <i class="fa fa-user-circle"></i>
+            </a>
+            <?php endif; ?>
         </div>
 
     </header>
@@ -87,13 +92,14 @@ if(!empty($body['action'])){
     </div>  
 
     <nav class="padding_X d-flex justify-content-around py-3 border-top">
-        <a href="" class="font-weight-bold text-decoration-none">Trang chủ</a>
-        <a href="" class="font-weight-bold text-decoration-none">Giới thiệu</a>
-        <a href="" class="font-weight-bold text-decoration-none">Khóa học</a>
-        <a href="" class="font-weight-bold text-decoration-none">Sách</a>
-        <a href="" class="font-weight-bold text-decoration-none">Thi Online</a>
-        <a href="" class="font-weight-bold text-decoration-none">Ving danh</a>
-        <a href="" class="font-weight-bold text-decoration-none">Liên hệ</a>
+        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Trang chủ</a>
+        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Giới thiệu</a>
+        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Liên hệ</a>
+        <a href="<?php echo _WEB_HOST_ROOT.'?module=course'; ?>" class="font-weight-bold text-decoration-none">Khóa học</a>
+        <a href="<?php echo _WEB_HOST_ROOT.'?module=book'; ?>" class="font-weight-bold text-decoration-none">Sách</a>
+        <a href="<?php echo _WEB_HOST_ROOT.'?module=exam'; ?>" class="font-weight-bold text-decoration-none">Thi Online</a>
+        <a href="<?php echo _WEB_HOST_ROOT.'?module=blog'; ?>" class="font-weight-bold text-decoration-none">Bài viết</a>
+        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Ving danh</a>
     </nav>
 
 

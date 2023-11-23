@@ -22,9 +22,9 @@ view('course', 'client');
 
 // view('evaluate', 'client');
 
-// view('blog', 'client');
+view('blog', 'client');
 
-// view('register_tc', 'client');
+view('register_tc', 'client');
 
 
 ?>
