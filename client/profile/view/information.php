@@ -37,8 +37,13 @@ if(is_Post()){
     }
 
     if(!empty($data['phone'])){
+        $phone = $data['phone'];
         if(!preg_match('~^0[0-9]{9}$~', $data['phone'])){
             $errors['phone'] = 'Vui lòng nhập đúng định dạng số điện thoại việt nam';
+        }else{
+            if(getCountRows("SELECT id FROM user WHERE id<>'$id' AND phone='$phone'")){
+                $errors['phone'] = 'Số điện thoại này đã có trên hệ thống';
+            }
         }
     }
 
