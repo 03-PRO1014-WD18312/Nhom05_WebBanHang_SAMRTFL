@@ -6,6 +6,7 @@ $data = [
 
 layout('header', 'client', $data);
 
+
 view('forgot', 'client', 'auth');
 
 layout('footer', 'client')

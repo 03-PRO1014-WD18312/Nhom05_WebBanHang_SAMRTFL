@@ -5,6 +5,7 @@ $data = [
 ];
 
 layout('header', 'client', $data);
+ 
 
 view('change_password', 'client', 'auth');
 
