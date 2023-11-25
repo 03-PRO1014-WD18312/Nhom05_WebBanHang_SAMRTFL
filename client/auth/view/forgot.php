@@ -82,6 +82,7 @@ $old = getFlashData('old');
 
     <div class="padding_X">
 
+    
     <?php getAlert($msg, $type); ?>
 
     <form action="" method="post" class="">

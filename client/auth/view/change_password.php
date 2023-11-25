@@ -2,6 +2,7 @@
 
 $body = getRequest('get');
 
+
 if(!empty($body['token'])){
     $token = $body['token'];
     $detailUser = getRow("SELECT * FROM user WHERE token='$token'");
