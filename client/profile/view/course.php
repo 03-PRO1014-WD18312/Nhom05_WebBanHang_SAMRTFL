@@ -1,68 +1,35 @@
-<h2 class="text-center">CÙNG SMARTFL HỌC NÀO</h2>
+
+<?php
+
+$myData = _MY_DATA;
+
+$id = $myData['id'];
+
+$allMyCourse = getRaw("SELECT c.*, t.name AS 't_name' FROM my_course AS m INNER JOIN course AS c ON m.course_id=c.id INNER JOIN course_type AS t ON c.course_type_id=t.id WHERE m.user_id='$id' AND m.status<>'0' AND c.status<>'0'");
+
+?>
+
+<h3 class="text-primary">Học cùng SMARTFL:</h3>
 <br>
-
+<?php if(!empty($allMyCourse)): ?>
 <div class="course_home">
-
+<?php foreach ($allMyCourse as $key => $value): ?>
 <div class="item_course border">
 
-<img class="w-100 mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/course_huy.jpg'; ?>" alt="">
+<a href="?module=course&action=detail_course&course_id=<?php echo $value['id']; ?>"><img class="w-100 mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a> 
 
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
-
-<div class="sub_item_course">
-    <small>Huy quần hoa</small>
-    <small style="text-align: end;">700.000 VND</small>
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
-</div>
-
-</div>
-
-<div class="item_course border">
-
-<img class="w-100 mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/course_huy.jpg'; ?>" alt="">
-
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
+<h6><a href="?module=course&action=detail_course&course_id=<?php echo $value['id']; ?>" class="text-decoration-none"><?php echo $value['title']; ?></a></h6>
 
 <div class="sub_item_course">
-    <small>Huy quần hoa</small>
-    <small style="text-align: end;">700.000 VND</small>
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
+    <small></small>
+    <small style="text-align: end;"><?php echo $value['price']; ?> VND</small>
+    <h6>Loại: <?php echo $value['t_name']; ?></h6>
+    <h6 style="text-align: end;"><?php echo $value['discount']; ?> VND</h6>
 </div>
 
 </div>
-
-<div class="item_course border">
-
-<img class="w-100 mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/course_huy.jpg'; ?>" alt="">
-
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
-
-<div class="sub_item_course">
-    <small>Huy quần hoa</small>
-    <small style="text-align: end;">700.000 VND</small>
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
+<?php endforeach; ?>
 </div>
-
-</div>
-
-
-<div class="item_course border">
-
-<img class="w-100 mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/course_huy.jpg'; ?>" alt="">
-
-<h6>Ghép ảnh chuyên nghiệp với Photoshop</h6>
-
-<div class="sub_item_course">
-    <small>Huy quần hoa</small>
-    <small style="text-align: end;">700.000 VND</small>
-    <h6>Start</h6>
-    <h6 style="text-align: end;">500.000 VND</h6>
-</div>
-
-</div>  
-
-
-</div>
+<?php else: ?>
+    <h4 class="text-danger text-center">Chưa có khóa học nào</h4>
+<?php endif; ?>

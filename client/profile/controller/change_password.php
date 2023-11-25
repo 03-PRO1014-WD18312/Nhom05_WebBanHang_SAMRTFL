@@ -6,7 +6,6 @@ if(!isLogin()){
     redirect(_WEB_HOST_ROOT);
 }
 
-
 layout('header', 'client');
 
 ?>
@@ -21,7 +20,7 @@ layout('header', 'client');
 
 view('sidebar', 'client', 'profile');
 
-view('forgot', 'client', 'profile');
+view('change_password', 'client', 'profile');
 
 ?>
 

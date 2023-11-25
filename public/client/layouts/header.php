@@ -99,7 +99,7 @@ if(!empty($body['action'])){
         <a href="<?php echo _WEB_HOST_ROOT.'?module=book'; ?>" class="font-weight-bold text-decoration-none">Sách</a>
         <a href="<?php echo _WEB_HOST_ROOT.'?module=exam'; ?>" class="font-weight-bold text-decoration-none">Thi Online</a>
         <a href="<?php echo _WEB_HOST_ROOT.'?module=blog'; ?>" class="font-weight-bold text-decoration-none">Bài viết</a>
-        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Ving danh</a>
+        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Vinh danh</a>
     </nav>
 
 
