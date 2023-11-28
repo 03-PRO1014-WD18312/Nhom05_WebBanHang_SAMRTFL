@@ -9,7 +9,6 @@
 
 <ul class="sidebar_nav bg-white">
     <a href="?module=profile" class="p-2 d-block border text-decoration-none">Thông tin người dùng</a>
-    <a href="?module=profile&action=book" class="p-2 d-block border text-decoration-none">Các sách đã mua</a>
     <a href="?module=profile&action=course" class="p-2 d-block border text-decoration-none">Các khóa học đã mua</a>
     <a href="?module=profile&action=result_exam" class="p-2 d-block border text-decoration-none">Điểm các bài kiểm tra</a>
     <a href="?module=profile&action=order" class="p-2 d-block border text-decoration-none">Các đơn hàng</a>

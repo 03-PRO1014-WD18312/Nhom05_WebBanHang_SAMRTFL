@@ -9,6 +9,10 @@ if(!empty($body['page'])){
     $page = 1;
 }
 
+if(!empty($body['chapter_id'])){
+    $chapter_id = $body['chapter_id'];
+}
+
 $count = 0;
 $filter = '';
 $urlFilter = '';

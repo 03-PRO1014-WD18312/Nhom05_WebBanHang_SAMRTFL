@@ -118,9 +118,9 @@ $type = getFlashData('type');
         <p>Giá gốc: <i><?php echo $detailCourse['price']; ?> VND</i></p>
         <br>
         <?php if(empty($myCourse)): ?>
-        <a href="?module=cart&action=qr_course&id=<?php echo $course_id; ?>" class="btn btn-primary d-block">Mua khóa học</a>
+        <a href="?module=cart&action=buy_course&id=<?php echo $course_id; ?>" class="btn btn-primary d-block">Mua khóa học</a>
         <?php else: ?>
-        <span class="btn btn-success d-block">Khóa học này đã được mua</span>
+        <a href="" class="btn btn-success d-block">Khóa học này đã được mua</a>
         <?php endif; ?>
         <br>
         <p>Chương: <?php echo $numberChapter; ?> chương</p>

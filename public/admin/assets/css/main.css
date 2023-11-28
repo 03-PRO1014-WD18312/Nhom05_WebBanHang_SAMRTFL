@@ -1,4 +1,7 @@
 
+p{
+    margin: 0;
+}
 
 .container_my{
     padding: 0 10px;
@@ -36,10 +39,4 @@
 .item_question{
     margin-bottom: 10px;
     border-bottom: 1px solid #007bff;
-}
-
-a{
-
-
-
 }
