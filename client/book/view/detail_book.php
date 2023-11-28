@@ -5,6 +5,12 @@
    if(!empty($body['id'])){
    
        $id = $body['id'];
+       
+       if(isLogin()){
+            $user_id = _MY_DATA['id'];
+        }else{
+            $user_id = 0;
+        }
    
        $detailBook = getRow("SELECT b.*, t.name AS 't_name' FROM book AS b INNER JOIN book_type AS t ON b.book_type_id=t.id WHERE b.id='$id' AND b.status<>'0'");
    
@@ -21,8 +27,14 @@
        setFlashData('type', 'danger');
        redirect("?module=book");
    }
+
+$msg = getFlashData('msg');
+$type = getFlashData('type');
    
 ?>
+
+<?php getAlert($msg, $type); ?>
+
 <div class="box_detail_book">
 
 <img class="w-100" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$detailBook['image']; ?>" alt="">
@@ -35,7 +47,8 @@
 <p>
     Chia sẻ: <a href="" class="btn btn-primary"><i class="fab fa-facebook-f mr-2"></i> Facebook</a> <a href="" class="btn btn-dark"><i class="fab fa-twitter mr-2"></i>Twitter</a>
 </p>
-
+<hr>
+<p>Số lượng: <?php echo $detailBook['quantity']; ?></p>
 <hr>
 <p> 
   <h6>Mô tả ngắn: </h6>  <?php echo html_entity_decode($detailBook['description']);?>
@@ -65,7 +78,11 @@
         <a href="" class="btn btn-danger w-100">Mua ngay</a>
     </li>
     <li class="list-group-item px-3 text-center">
-        <a href="" class="btn btn-success w-100">Thêm vào rỏ hàng</a>
+        <?php if(!empty($detailBook['quantity'])): ?>
+        <a href="?module=book&action=add_cart&id=<?php echo $id; ?>" class="btn btn-success w-100">Thêm vào giỏ hàng</a>
+        <?php else: ?>
+        <a href="" onclick="return confirm(`Hết hàng`);" class="btn btn-success w-100">Thêm vào giỏ hàng</a>
+        <?php endif; ?>
     </li>
   </ul>
 </div>
@@ -87,6 +104,23 @@
 
 
 </div>
+
+<?php
+        $data = [
+            'book_id' => $id,
+            'user_id' => $user_id
+        ];
+        view('star', 'client', 'book', $data);
+?>
+
+<?php 
+
+        $data = [
+            'book_id' => $id,
+            'user_id' => $user_id
+        ];
+        view('comment', 'client', 'book', $data);
+?>
 
 <?php 
 

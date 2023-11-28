@@ -35,6 +35,14 @@ if(!empty($body['action'])){
     $action = $body['action'];
 }
 
+$web_phone = getRow("SELECT opt_value FROM options WHERE opt_key='web_phone'")['opt_value'];
+$link_phone = getRow("SELECT opt_value FROM options WHERE opt_key='link_phone'")['opt_value'];
+$web_email = getRow("SELECT opt_value FROM options WHERE opt_key='web_email'")['opt_value'];
+$link_email = getRow("SELECT opt_value FROM options WHERE opt_key='link_email'")['opt_value'];
+$web_youtube = getRow("SELECT opt_value FROM options WHERE opt_key='web_youtube'")['opt_value'];
+$web_facebook = getRow("SELECT opt_value FROM options WHERE opt_key='web_facebook'")['opt_value'];
+$web_twitter = getRow("SELECT opt_value FROM options WHERE opt_key='web_twitter'")['opt_value'];
+
 ?>
 
 <body class="<?php echo (!empty($module) && !empty($action) && getActive(['cart']) && getAction(['email_course', 'pay_book', 'make_exam']))?'d-none':''; ?>">
@@ -81,13 +89,13 @@ if(!empty($body['action'])){
 
     <div class="padding_X my-3 contact_header">
         <div>
-            <a href="" class="text-decoration-none">Phone: <span class="text-warning ">0123456789</span></a>
-            <a href="" class="ml-2 text-decoration-none">Email: <span class="text-warning">email@gmail.com</span></a>
+            <a href="<?php echo $link_phone; ?>" class="text-decoration-none">Phone: <span class="text-warning "><?php echo $web_phone; ?></span></a>
+            <a href="<?php echo $link_email; ?>" class="ml-2 text-decoration-none">Email: <span class="text-warning"><?php echo $web_email; ?></span></a>
         </div>
         <div class="" style="text-align: right;">
-            <a href="" class="mx-2 text-danger"><i class="fab fa-youtube"></i></a>
-            <a href="" class="mx-2"><i class="fab fa-facebook"></i></a>
-            <a href="" class="mx-2"><i class="fab fa-twitter"></i></a>
+            <a href="<?php echo $web_youtube; ?>" class="mx-2 text-danger"><i class="fab fa-youtube"></i></a>
+            <a href="<?php echo $web_facebook; ?>" class="mx-2"><i class="fab fa-facebook"></i></a>
+            <a href="<?php echo $web_twitter; ?>" class="mx-2"><i class="fab fa-twitter"></i></a>
         </div>
     </div>  
 

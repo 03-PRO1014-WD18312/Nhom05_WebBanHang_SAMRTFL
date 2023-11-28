@@ -31,6 +31,30 @@
             </a>
           </li>
 
+          <li class="nav-item has-treeview <?php echo getActive(['groups', 'user', 'permission'])?'menu-open':''; ?>">
+            <a href="" class="nav-link <?php echo getActive(['groups', 'user', 'permission'])?'active':''; ?>">
+            <i class="fa fa-user mx-2"></i>
+              <p>
+                Người
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="?module=user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?module=groups" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item has-treeview <?php echo getActive(['blog_type', 'blog'])?'menu-open':''; ?>">
             <a href="" class="nav-link <?php echo getActive(['blog_type', 'blog'])?'active':''; ?>">
               <i class="fa fa-blog mx-2"></i>
@@ -56,8 +80,8 @@
           </li>
 
 
-          <li class="nav-item has-treeview <?php echo getActive(['course_type', 'course'])?'menu-open':''; ?>">
-            <a href="" class="nav-link <?php echo getActive(['course_type', 'course'])?'active':''; ?>">
+          <li class="nav-item has-treeview <?php echo getActive(['course_type', 'course', 'chapter_course', 'exercise_course'])?'menu-open':''; ?>">
+            <a href="" class="nav-link <?php echo getActive(['course_type', 'course', 'chapter_course', 'exercise_course'])?'active':''; ?>">
               <i class="fa fa-video mx-2"></i>
               <p>
                 Khóa học
@@ -80,8 +104,8 @@
             </ul>
           </li>
 
-          <li class="nav-item has-treeview <?php echo getActive(['exam', 'exam_type'])?'menu-open':''; ?>">
-            <a href="" class="nav-link <?php echo getActive(['exam', 'exam_type'])?'active':''; ?>">
+          <li class="nav-item has-treeview <?php echo getActive(['exam', 'exam_type', 'question_exam'])?'menu-open':''; ?>">
+            <a href="" class="nav-link <?php echo getActive(['exam', 'exam_type', 'question_exam'])?'active':''; ?>">
               <i class="fab fa-earlybirds mx-2"></i>
               <p>
                 Bài kiểm tra
@@ -126,6 +150,46 @@
                 </a>
               </li>
             </ul>
+          </li>
+
+          <li class="nav-item has-treeview <?php echo getActive(['option'])?'menu-open':''; ?>">
+            <a href="" class="nav-link <?php echo getActive(['option'])?'active':''; ?>">
+            <i class="fa fa-cog mx-2"></i>
+              <p>
+                Option
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="?module=option&action=header" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Header</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?module=option&action=slide" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Slide</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?module=option&action=footer" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Footer</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="?module=cart" class="nav-link <?php echo getActive(['cart'])?'active':''; ?>">
+              <i class="fa fa-truck mx-1"></i>
+              <p>
+                Đơn hàng
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
           </li>
 
           <li class="nav-item">

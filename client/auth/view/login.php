@@ -38,7 +38,10 @@ if(is_Post()){
         }
     }
 
+
+
     if(empty($errors)){
+        if(!empty($detailUser['status'])){
 
         $token = uniqid().time();
         $user_id = $detailUser['id'];
@@ -58,6 +61,12 @@ if(is_Post()){
             setFlashData('msg', 'Lỗi hệ thống');
             setFlashData('type', 'danger');
         }
+
+        }else{
+            setFlashData('msg', 'Tài khoản đang bị khóa');
+            setFlashData('type', 'danger');
+        }
+
 
     }else{
         setFlashData('msg', 'Vui lòng kiểm tra form của bạn');
