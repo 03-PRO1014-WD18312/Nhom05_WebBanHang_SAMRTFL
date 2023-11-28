@@ -103,7 +103,7 @@ if(!empty($body['id'])){
 
             <tr>
                 <td class="board_td text-center"><?php echo $count; ?></td>
-                <td class="board_td text-center"><a href="?module=exercise_course&chapter_id=<?php echo $item['id']; ?>"><?php echo $item['name']; ?></a></td>
+                <td class="board_td text-center"><a href="?module=exercise_course&chapter_id=<?php echo $id; ?>"><?php echo $item['name']; ?></a></td>
                 <td class="board_td text-center">
                     <a href="<?php echo '?module='.$module.'&view=fix&id='.$id.'&chapter_id='.$item['id']; ?>" class="btn btn-warning"><i class="fa fa-wrench"></i></a>
                 </td>

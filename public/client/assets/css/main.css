@@ -58,6 +58,15 @@ h1, h2, h3, h4, h5, h6, p{
     box-shadow: 0 0 4px 2px gray;
 }
 
+.text-end{
+    text-align: end;
+}
+
+
+.text-start{
+    text-align: start;
+}
+
 /* header */
 
 .box_header{
@@ -346,6 +355,20 @@ h1, h2, h3, h4, h5, h6, p{
 
 /* book */
 
+.rating {
+    display: inline-block;
+    font-size: 35px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating input:checked + .star,
+.rating .star:hover,
+.rating .star:hover ~ .star {
+    color: #ffc107;
+}
 
 
 /* book */
@@ -376,9 +399,7 @@ column-gap: 20px;
 /* cart */
 
 .box_cart{
-    display: grid;
-    grid-template-columns: 7fr 2fr;
-    column-gap: 10px;
+
 }
 
 .item_cart{
@@ -399,6 +420,39 @@ column-gap: 20px;
 
 .box_cart .card{
     border: 2px solid #ffc107;
+}
+
+.submit_cart{
+
+    border:  2px solid #ffc107;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.pay_type{
+    
+    border-top: 7px solid #007bff;
+    border-left: 7px solid #007bff;
+    border-right: 7px solid #ffc107;
+    border-bottom: 7px solid #ffc107;
+    border-radius: 15px;
+
+}
+
+.pay_thank{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pay_thank h1{
+    color: cornflowerblue;
+    font-family: cursive;
+    text-shadow: 3px 3px 5px black;
 }
 
 /* form_course */
@@ -449,12 +503,15 @@ column-gap: 20px;
 /* cart */
 
 
+/* comment */
+
+.item_comment{
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+}
 
 
-
-
-
-
+/* comment */
 
 
 
@@ -462,6 +519,11 @@ column-gap: 20px;
 
 .box_footer{
     /* display: grid; */
+}
+
+.footer_footer{
+    background-color: black;
+    color: #f5f5f5;
 }
 
 footer{

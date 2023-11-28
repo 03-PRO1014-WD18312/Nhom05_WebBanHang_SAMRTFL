@@ -47,12 +47,16 @@ if(is_Post()){
         $errors['book_type_id'] = 'Vui lòng chọn thông tin';
     }
 
-
+    $quantity = $data['quantity'];
 
     if(empty($errors)){
+
+        if(empty($quantity)) $quantity = 0; 
+
         $dataUpdate = [
             'title' => $data['title'],
             'price' => $data['price'],
+            'quantity' => $quantity,
             'book_type_id' => $data['book_type_id'],
             'description' => $data['description'],
             'content' => $data['content'],
@@ -64,9 +68,9 @@ if(is_Post()){
             $nameImage = time().'_'.$image['name'];
             $toFile =  _WEB_PATH_IMAGE_CLIENT.'/'.$nameImage;
             // chỉ xóa khi update
-            if(file_exists(_WEB_PATH_IMAGE_CLIENT.'/'.$detailBook['image'])){
-            $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT.'/'.$detailBook['image']);
-            }            
+            // if(file_exists(_WEB_PATH_IMAGE_CLIENT.'/'.$detailBook['image'])){
+            // $statuLink = unlink(_WEB_PATH_IMAGE_CLIENT.'/'.$detailBook['image']);
+            // }            
             move_uploaded_file($image['tmp_name'], $toFile);
             $dataUpdate['image'] = $nameImage;
         }
@@ -109,10 +113,16 @@ if(empty($old)){
 
     <form action="" method="post" class="row mx-0" enctype="multipart/form-data">
 
-        <div class="form-group col-12">
+        <div class="form-group col-6">
             <label for="">Tiêu đề</label>
             <input type="text" name="title" value="<?php echo !empty($old['title'])?$old['title']:''; ?>" class="form-control"> 
             <?php echo !empty($errors['title'])?formError($errors['title']):''; ?>
+        </div>
+
+        <div class="form-group col-6">
+            <label for="">Số lượng</label>
+            <input type="number" name="quantity" value="<?php echo !empty($old['quantity'])?$old['quantity']:''; ?>" class="form-control"> 
+            <span class="text-danger"><?php echo !empty($errors['quantity'])?$errors['quantity']:''; ?></span>
         </div>
 
         <div class="form-group col-6">

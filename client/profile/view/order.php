@@ -51,6 +51,8 @@ $type = getFlashData('type');
             <td class="board_td text-center"><?php echo $count; ?></td>
             <td class="board_td">
                 <h6><?php echo $value['code_order']; ?></h6>
+                <p>Người nhận: <?php echo $value['fullname']; ?></p>
+                <p>Số email: <?php echo $value['email']; ?></p>
                 <p>Số điện thoại: <?php echo $value['phone']; ?></p>
                 <p>Địa chỉ: <?php echo $value['address']; ?></p>
                 <p>Tổng giá: <?php echo $value['total']; ?> VND</p>
@@ -61,10 +63,8 @@ $type = getFlashData('type');
                     <a href="" class="">Tiền mặt</a>
                 <?php elseif($value['pay_type'] == 'cash_online'): ?>
                     <a href="" class="">Chuyển khoản</a>
-                <?php elseif($value['pay_type'] == 'momo_pr'): ?>
-                    <a href="" class="">MOMO QR</a>
-                <?php elseif($value['pay_type'] == 'momo_atm'): ?>
-                    <a href="" class="">MOMO ATM</a>
+                <?php elseif($value['pay_type'] == 'momo'): ?>
+                    <a href="" class="">MOMO</a>
                 <?php elseif($value['pay_type'] == 'vnpay'): ?>
                     <a href="" class="">VN PAY</a>
                 <?php elseif($value['pay_type'] == 'paypal'): ?>
