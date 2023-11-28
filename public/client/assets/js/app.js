@@ -3,9 +3,9 @@ function runCodejs(){
 
     qr();
 
-    // if(time_over_exam != null && time_now_exam != null){
-    //     completeExam();
-    // }
+    if(time_over_exam != null && time_now_exam != null){
+        completeExam();
+    }
 
     showExercise(); 
 
@@ -105,6 +105,12 @@ function showExercise(){
     });
     }
 
-
-
 }
+
+
+
+
+
+
+
+

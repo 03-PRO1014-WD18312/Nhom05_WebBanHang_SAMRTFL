@@ -67,7 +67,7 @@ getAlert($msg, $type);
         Thời gian làm bài cũng đã có trong phần chi tiết, khi đến giờ bạn mới có thể làm bài và thời gian làm bài cũng đã được giới hạn trong thời gian cho phép của bài thi.
     </p>
     <?php if(empty($makeExam)): ?>
-    <a href="<?php echo !empty($time_buy)?'?module=cart&action=qr_exam&id='.$id:''; ?>" class="btn btn-<?php echo !empty($time_buy)?'primary':'danger'; ?> w-100 mt-3"><?php echo !empty($time_buy)?'Đã mở bán':'Chưa mở bán'; ?></a>
+    <a href="<?php echo !empty($time_buy)?'?module=cart&action=buy_exam&id='.$id:''; ?>" class="btn btn-<?php echo !empty($time_buy)?'primary':'danger'; ?> w-100 mt-3"><?php echo !empty($time_buy)?'Đã mở bán':'Chưa mở bán'; ?></a>
 <?php
     else:
     if(strtotime($detailExam['time_start']) > $time_now):  

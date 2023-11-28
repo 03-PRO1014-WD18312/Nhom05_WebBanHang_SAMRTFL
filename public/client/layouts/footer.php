@@ -1,12 +1,32 @@
+<?php
 
+$optFH = getRow("SELECT * FROM options WHERE opt_key='web_footer_header'");
+$optFF = getRow("SELECT * FROM options WHERE opt_key='web_footer_footer'");
 
+$arrFH = json_decode($optFH['opt_value'], true);
+$strFF = $optFF['opt_value'];
+
+?>
 
 
 <footer class="box_footer">
 
 
-<div class="footer_end py-3 text-light padding_X" style="background-color: #222;">
-    <p class="m-0">© Website đào tạo học sinh người làm SMARTFL - SĐT: 0123456789 - Khóa học trực tuyến giúp bạn phát triển bản thân</p>
+<div class="footer_end">
+
+    <div class="footer_header d-flex justify-content-around padding_X py-4">
+        <?php
+            if(!empty($arrFH)):
+                foreach ($arrFH as $key => $value):
+        ?>
+        <div class="item_footer px-4">
+            <?php echo html_entity_decode($value); ?>
+        </div>
+        <?php endforeach; endif; ?>
+
+    </div>
+
+    <p class="m-0 py-4 footer_footer text-center"><?php echo $strFF; ?></p>
 </div>
 
 </footer>
@@ -43,6 +63,9 @@ $('.owl-carousel').owlCarousel({
 
 <script>
 
+let time_over_exam = null;
+let time_now_exam = null;
+
 <?php
 
 $body = getRequest('get');
@@ -58,15 +81,13 @@ if(!empty($body['make_exam'])){
 if(!empty($detailMakeExam)):
 
 ?>
-
 let time_start_exam = <?php echo strtotime($detailExam['time_start']); ?>
 
-let time_over_exam = <?php echo $detailExam['time_end']; ?>
+time_over_exam = <?php echo $detailExam['time_end']; ?>
 
-let time_now_exam = <?php echo strtotime(date('Y-m-d H:i:s')); ?>
+time_now_exam = <?php echo strtotime(date('Y-m-d H:i:s')); ?>
 
 <?php endif; ?>
-
 </script>
 
 <script src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/js/bootstrap.min.js?ver='.rand(); ?>"></script>
