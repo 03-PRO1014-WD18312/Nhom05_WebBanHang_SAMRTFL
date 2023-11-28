@@ -47,6 +47,25 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="?module=user&action=staff" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Nhân viên</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?module=user&action=tearch" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Giáo viên</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?module=user&action=client" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Khách hàng</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
                 <a href="?module=groups" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh mục</p>
@@ -192,6 +211,37 @@
             </a>
           </li>
 
+
+          <li class="nav-item has-treeview <?php echo getActive(['statistics'])?'menu-open':''; ?>">
+            <a href="" class="nav-link <?php echo getActive(['statistics'])?'active':''; ?>">
+            <i class="fa fa-align-left mx-2"></i>
+              <p>
+                Thống kê
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="?module=statistics&action=book" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sách</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Khóa học</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bài kiểm tra</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -201,6 +251,8 @@
               </p>
             </a>
           </li>
+
+
 
         </ul>
       </nav>
