@@ -12,10 +12,11 @@ require _WEB_PATH_ROOT . '/client/home/model/menu_banner.php';
 
             <ul class="list-group list-group-flush menu_home my-auto">
                 <?php
-                if (!empty($allCourseType)) {
-                    foreach ($allCourseType as $value) {
+
+                if (!empty($allBookType)) {
+                    foreach ($allBookType as $value) {
                 ?>
-                        <a href="" class="list-group-item py-1 px-2 text-decoration-none text-dark"><?= $value['name'] ?></a>
+                        <a href="?module=book&book_type=<?php echo $value['id']; ?>" class="list-group-item py-1 px-2 text-decoration-none text-dark"><?= $value['name'] ?></a>
                 <?php
                     }
                 }
