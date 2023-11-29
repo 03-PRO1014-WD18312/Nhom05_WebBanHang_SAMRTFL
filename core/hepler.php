@@ -360,6 +360,8 @@ function removeComment($id){
     if(!empty($detailComment)){
         if(delete('comment', "parent_id='$id'")){
             if(delete('comment', "id='$id'")){
+                setFlashData('msgcm', 'Xóa bình luận thành công');
+                setFlashData('typecm', 'success');
                 redirect($_SERVER['HTTP_REFERER']);
             }
         }else{

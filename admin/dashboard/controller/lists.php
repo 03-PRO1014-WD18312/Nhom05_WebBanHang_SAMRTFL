@@ -15,7 +15,6 @@ layout('sidebar', 'admin', $data);
 
 layout('breadcrumb', 'admin', $data);
 
-
 ?>
 
 
