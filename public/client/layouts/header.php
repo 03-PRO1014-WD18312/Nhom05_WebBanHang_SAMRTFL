@@ -59,10 +59,10 @@ $web_twitter = getRow("SELECT opt_value FROM options WHERE opt_key='web_twitter'
         </form>
 
         <div class="btn_header d-flex justify-content-around">
-            <a href="" class="btn btn-secondary flex_center">
+            <a href="?module=profile&action=active_course" class="btn btn-secondary flex_center">
                 Kích hoạt khóa học
             </a>
-            <a href="" class="btn btn-primary flex_center">
+            <a href="?module=profile&action=make_exam" class="btn btn-primary flex_center">
                 Làm bài thi
             </a>
             <a href="?module=profile&action=course" class="btn btn-warning flex_center">

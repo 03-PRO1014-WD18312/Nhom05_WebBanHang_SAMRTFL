@@ -35,7 +35,7 @@
             <a href="" class="nav-link <?php echo getActive(['groups', 'user', 'permission'])?'active':''; ?>">
             <i class="fa fa-user mx-2"></i>
               <p>
-                Người
+                Tài khoản
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

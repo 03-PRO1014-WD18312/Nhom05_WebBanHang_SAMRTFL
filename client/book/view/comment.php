@@ -3,7 +3,7 @@
 
 $body = getRequest('get');
 
-if(is_Post()){
+if(is_Post() && !empty($_POST['submit_comment'])){
 
     if(!isLogin()){
         setFlashData('msgcm', 'Vui lòng đăng nhập để bình luận');
@@ -132,7 +132,7 @@ $countComment = getCountRows("SELECT id FROM comment WHERE book_id='$book_id'");
     <textarea name="comment" id="" cols="30" rows="3" class="form-control"><?php echo !empty($old['comment'])?$old['comment']:''; ?></textarea>
     <?php !empty($errors['comment'])?formError($errors['comment']):''; ?>
 </div>
-<input type="submit" value="Bình luận" name="" class="btn btn-primary">
+<input type="submit" value="Bình luận" name="submit_comment" class="btn btn-primary">
 
 </form>
 </div>

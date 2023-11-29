@@ -297,6 +297,10 @@ h1, h2, h3, h4, h5, h6, p{
 
 /* make_exam */
 
+iframe{
+    width: 100%;
+    height: 500px;
+}
 
 .box_question{
 
@@ -364,11 +368,10 @@ h1, h2, h3, h4, h5, h6, p{
     display: none;
 }
 
-.rating input:checked + .star,
-.rating .star:hover,
+/* .rating input:checked + .star,
 .rating .star:hover ~ .star {
-    color: #ffc107;
-}
+    color: black !important;
+} */
 
 
 /* book */

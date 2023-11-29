@@ -15,7 +15,41 @@
        $detailBook = getRow("SELECT b.*, t.name AS 't_name' FROM book AS b INNER JOIN book_type AS t ON b.book_type_id=t.id WHERE b.id='$id' AND b.status<>'0'");
    
        if(!empty($detailBook)){
-   
+        
+        if(is_Post() && !empty($_POST['buy_now'])){
+
+            if($detailBook['quantity'] <= 0){
+                setFlashData('msg', 'Hết hàng');
+                setFlashData('type', 'danger');
+                redirect("?module=book&action=detail_book&id=$id");
+            }
+
+            $data = getRequest();
+            $errors = [];
+            if(empty($data['quantity'])){
+                $errors['quantity'] = "Vui lòng điền số lượng";
+            }else{
+                if($detailBook['quantity'] < $data['quantity']){
+                    setFlashData('msg', 'Lượng hàng không đủ');
+                    setFlashData('type', 'danger');
+                    redirect("?module=book&action=detail_book&id=$id");
+                }
+            }
+
+            if(empty($errors)){
+                $dataBook = [
+                    'book_id' => $id,
+                    'quantity' => $data['quantity']
+                ];
+                setSession('data_book', $dataBook);
+                redirect('?module=book&action=buy_book');
+            }else{
+                setFlashData('msg', 'Vui lòng điền số lượng');
+                setFlashData('type', 'danger');
+                redirect("?module=book&action=detail_book&id=$id");
+            }
+        }
+
        }else{
            setFlashData('msg', 'url này không tồn tại');
            setFlashData('type', 'danger');
@@ -75,7 +109,16 @@ $type = getFlashData('type');
              </form>
     </li> -->
     <li class="list-group-item px-3 text-center">
-        <a href="" class="btn btn-danger w-100">Mua ngay</a>
+        <form action="" method="post">
+            <div class="form-group mb-2 text-center">
+                <span class="btn btn-primary my-auto minus_book"><i class="fa fa-minus"></i></span>
+                <input type="number" name="quantity" class="w-50 quantity_book form-control m-0 d-inline-block">
+                <span class="btn btn-primary my-auto add_book"><i class="fa fa-plus"></i></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="buy_now" class="btn btn-danger w-100" value="Mua ngay">
+            </div>
+        </form>
     </li>
     <li class="list-group-item px-3 text-center">
         <?php if(!empty($detailBook['quantity'])): ?>

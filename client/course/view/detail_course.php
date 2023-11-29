@@ -6,7 +6,6 @@ if(isLogin()){
 }else{
     $user_id = 0;
 }
-
 $body = getRequest('get');
 
 $chapter_id = 0;
