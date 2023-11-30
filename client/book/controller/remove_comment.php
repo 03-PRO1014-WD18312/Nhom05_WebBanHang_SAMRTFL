@@ -12,13 +12,13 @@ if(isLogin() && !empty($body['id'])){
     }else{
         setFlashData('msg', 'url này không tồn tại');
         setFlashData('type', 'danger');
-        redirect("?module=course");
+        redirect("?module=book");
     }
 
 }else{
     setFlashData('msg', 'url này lỗi');
     setFlashData('type', 'danger');
-    redirect("?module=course");
+    redirect("?module=book");
 }
 
 ?>

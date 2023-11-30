@@ -28,31 +28,29 @@ require _WEB_PATH_ROOT . '/client/home/model/menu_banner.php';
     </div>
 
     <div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="<?php echo _WEB_HOST_TEMPLATE . '/client/assets/image/banner1.png'; ?>" class="d-block w-100 h-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="<?php echo _WEB_HOST_TEMPLATE . '/client/assets/image/banner2.png'; ?>" class="d-block w-100 h-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="<?php echo _WEB_HOST_TEMPLATE . '/client/assets/image/banner3.jpeg'; ?>" class="d-block w-100 h-100" alt="...">
-                </div>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            <?php 
+                if(!empty($arrSlide)):
+                    foreach ($arrSlide as $key => $value):
+            ?>
+            <div style="height: 400px;" class="carousel-item <?php echo $key==0?'active':''; ?>">
+            <img src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value; ?>" class="d-block w-100 h-100" alt="...">
             </div>
-            <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </button>
+            <?php endforeach; else: ?>
+                <h3 class="text-center">Chưa có slide nào</h3>
+            <?php endif; ?>
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
         </div>
     </div>
 

@@ -1,59 +1,57 @@
-<h2 class="text-center">HÃY LÀM BÀI KIỂM TRA CỦA BẠN</h2>
+
+<?php
+$body = getRequest('get');
+
+$user_id = isLogin()['user_id'];
+
+$allExam = getRaw("SELECT e.*, m.id AS 'm_id' FROM make_exam AS m INNER JOIN exam AS e ON m.exam_id=e.id WHERE m.user_id='$user_id'");
+
+$msg = getFlashData('msg');
+$type = getFlashData('type');
+
+getAlert($msg, $type);
+
+?>
+
+<h2 class="text-primary text-center">LÀM BÀI TRÊN SMARTFL</h2>
+
 <br>
+
+<?php
+    if(!empty($allExam)):
+?>
+
 <div class="course_home">
 
-<div class="item_course border">
-
-<img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/exam.jpg'; ?>" alt="">
-
-<h6>6 lý do tại sao k2006-2007 khởi động sớm luôn và ngay???</h6>
-
-<div class="sub_item_course mt-3">
-    <p>Trạng thái:</p>
-    <h6 style="text-align: right;">10000 VND</h6>
-</div>
-
-</div>
+<?php
+    foreach ($allExam as $key => $value):
+?>
 
 <div class="item_course border">
 
-<img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/exam.jpg'; ?>" alt="">
+<a href="?module=make_exam&make_exam=<?php echo $value['m_id']; ?>"><img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
 
-<h6>6 lý do tại sao k2006-2007 khởi động sớm luôn và ngay???</h6>
-
-<div class="sub_item_course mt-3">
-    <p>Trạng thái:</p>
-    <h6 style="text-align: right;">10000 VND</h6>
-</div>
-
-</div>
-
-<div class="item_course border">
-
-<img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/exam.jpg'; ?>" alt="">
-
-<h6>6 lý do tại sao k2006-2007 khởi động sớm luôn và ngay???</h6>
+<h6><a href="?module=make_exam&make_exam=<?php echo $value['m_id']; ?>" class="text-decoration-none"><?php echo $value['title']; ?></a></h6>
+<p></p>
 
 <div class="sub_item_course mt-3">
-    <p>Trạng thái:</p>
-    <h6 style="text-align: right;">10000 VND</h6>
+    <p></p>
+    <h6 style="text-align: right;" class="text-warning"><?php echo $value['price']; ?> VND</h6>
 </div>
 
 </div>
 
-
-<div class="item_course border">
-
-<img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/exam.jpg'; ?>" alt="">
-
-<h6>6 lý do tại sao k2006-2007 khởi động sớm luôn và ngay???</h6>
-
-<div class="sub_item_course mt-3">
-    <p>Trạng thái:</p>
-    <h6 style="text-align: right;">10000 VND</h6>
-</div>
+<?php
+    endforeach;
+?>
 
 </div>
 
+<?php
+    else:
+?>
+    <h2 class="text-center text-danger">Không có dữ liệu</h2>
+<?php
+    endif;
+?>
 
-</div>
