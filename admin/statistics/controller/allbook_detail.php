@@ -2,7 +2,7 @@
 
 $data = [
 
-    'titlePage' => 'Biểu đồ thống kê '
+    'titlePage' => 'Bảng thống kê tất cả sản phẩm'
 ];
 layout('header', 'admin', $data);
 ?>
@@ -12,9 +12,8 @@ layout('sidebar', 'admin', $data);
 
 layout('breadcrumb', 'admin', $data);
 
-view('charts', 'admin', 'statistics');
+view('allbook_detail', 'admin', 'statistics');
 ?>
 <?php
-
 layout('footer', 'admin');
 ?>

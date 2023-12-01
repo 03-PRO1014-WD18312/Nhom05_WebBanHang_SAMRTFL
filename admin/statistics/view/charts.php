@@ -22,7 +22,7 @@ require _WEB_PATH_ROOT . '/admin/statistics/model/book.php';
     ]);
 
     var options = {
-      title: 'Biểu đồ thống kê danh mục sản phẩm'
+      title: 'Biểu đồ thống kê số lượng sản phẩm theo danh mục'
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
