@@ -1,7 +1,7 @@
 <?php
 
 $data = [
-    'titlePage' => 'Dashboard'
+    'titlePage' => 'Thêm người dùng'
 ];
 
 layout('header', 'admin', $data);
@@ -14,6 +14,8 @@ layout('header', 'admin', $data);
 layout('sidebar', 'admin', $data);
 
 layout('breadcrumb', 'admin', $data);
+
+view('add', 'admin', 'user');
 
 ?>
 

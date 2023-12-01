@@ -18,7 +18,6 @@ layout('header', 'client');
 
     view('course', 'client');
     view('blog', 'client');
-    view('register_tc', 'client');
     ?>
 
 </div>

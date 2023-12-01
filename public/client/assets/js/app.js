@@ -9,6 +9,10 @@ function runCodejs(){
 
     showExercise(); 
 
+    handleStar();
+
+    boughtNowBook();
+
 }
 
 runCodejs();
@@ -103,6 +107,50 @@ function showExercise(){
             }
         });
     });
+    }
+
+}
+
+function handleStar(){
+
+    let all_item_rating = document.querySelectorAll('.item_rating');
+    let all_star = document.querySelectorAll('.star');
+
+    if(!all_item_rating != null && all_star != null){
+        all_star.forEach((item, index)=>{
+            item.addEventListener('click', ()=>{
+                for (let j = 0; j <= 4; j++) {
+                    all_star[j].style.color = "black";
+                }
+                for (let i = 0; i <= index; i++) {
+                    all_star[i].style.color = "#ffc107";
+                }
+                console.log(all_item_rating[index]);
+                all_item_rating[index].checked = true;
+            });
+        });
+    }
+
+}
+
+function boughtNowBook(){
+
+    let add_book = document.querySelector('.add_book');
+    let quantity_book = document.querySelector('.quantity_book');
+    let minus_book = document.querySelector('.minus_book');
+
+    if(add_book != null && quantity_book != null && minus_book != null){
+        let quantity = 0;
+        add_book.addEventListener('click', ()=>{
+            quantity += 1;
+            if(quantity >= 10) quantity = 10;
+            quantity_book.value = quantity;
+        });
+        minus_book.addEventListener('click', ()=>{
+            quantity -= 1;
+            if(quantity <= 0 ) quantity = 0;
+            quantity_book.value = quantity;
+        });
     }
 
 }

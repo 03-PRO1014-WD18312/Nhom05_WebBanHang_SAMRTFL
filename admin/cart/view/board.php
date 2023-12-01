@@ -45,12 +45,12 @@ $type = getFlashData('type');
 
 <p class="text-center mb-3">Sơ đồ trạng thái đơn hàng</p>
 
-<div class="alert alert-primary d-flex justify-content-around" role="alert">
-    <span class="btn btn-danger">Chưa duyệt</span>
+<div class="alert alert-light d-flex justify-content-around" style="border: 2px solid #007bff;" role="alert">
+    <span class="btn btn-warning">Đơn mới</span>
     <span class="d-flex align-items-center font-weight-bolder">====></span>
-    <span class="btn btn-warning">Duyệt</span>
+    <span class="btn btn-info">Đang xử lí</span>
     <span class="d-flex align-items-center font-weight-bolder">====></span>
-    <span class="btn btn-info">Đang giao</span>
+    <span class="btn btn-primary">Đang giao</span>
     <span class="d-flex align-items-center font-weight-bolder">====></span>
     <span class="btn btn-success">Đã giao</span>
 </div>
