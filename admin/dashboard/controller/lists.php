@@ -15,6 +15,8 @@ layout('sidebar', 'admin', $data);
 
 layout('breadcrumb', 'admin', $data);
 
+view('lists', 'admin', 'dashboard');
+
 ?>
 
 

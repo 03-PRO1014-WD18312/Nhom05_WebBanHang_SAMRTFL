@@ -2,6 +2,13 @@
 
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'user', 'lists_client')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
+
 $body = getRequest('get');
 
 $count = 0;
@@ -10,7 +17,7 @@ $urlFilter = '';
 
 if(!empty($body['keywork'])){
     $keywork = $body['keywork'];
-    $filter .= " AND `fullname` LIKE '%$keywork%' ";
+    $filter .= " AND `email` LIKE '%$keywork%' ";
     $urlFilter .= "&keywork=$keywork";
 }
 
@@ -37,6 +44,7 @@ $type = getFlashData('type');
     <form action="" method="get" class="mx-0 row">
 
         <input type="hidden" name="module" value="<?php echo $module; ?>">
+        <input type="hidden" name="action" value="lists_client">
 
         <div class="form-group col-10">
             <input type="text" name="keywork" value="<?php echo !empty($keywork)?$keywork:''; ?>" class="form-control">
@@ -61,7 +69,6 @@ $type = getFlashData('type');
                 <th width="10%" class="board_th">Ảnh</th>
                 <th width="5%" class="board_th">Trạng thái</th>
                 <th width="5%" class="board_th">Quyền</th>
-                <th width="5%" class="board_th">Xóa</th>
             </tr>
         </thead>
         <tbody>
@@ -89,12 +96,9 @@ $type = getFlashData('type');
                 <td class="board_td text-center">
                     <img width="80%" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$image; ?>" alt="">
                 </td>
-                <td class="board_td text-center"><a href="?module=<?php echo $module.'&action=approve&id='.$id; ?>" class="btn btn-<?php echo !empty($status)?'success':'danger'; ?>"><?php echo !empty($status)?'Duyệt':'Chưa duyệt'; ?></a></td>
+                <td class="board_td text-center"><a href="" class="text-<?php echo !empty($status)?'success':'danger'; ?>"><?php echo !empty($status)?'Duyệt':'Chưa duyệt'; ?></a></td>
                 <td class="board_td text-center"><a href=""><?php echo $g_name; ?></a></td>
                 
-                <td class="board_td text-center">
-                    <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
-                </td>
             </tr>
 
         <?php
@@ -108,63 +112,63 @@ $type = getFlashData('type');
         </tbody>
     </table>
 
-    <br>
+    <br> 
 
 <?php
-    if(!empty($totalPage) && $totalPage > 1 ):
+    if (!empty($totalPage) && $totalPage > 1) :
 
-        $back = $page-1;
-        if($back < 1){
+        $back = $page - 1;
+        if ($back < 1) {
             $back = 1;
         }
-        $next = $page+1;
-        if($next > $totalPage){
+        $next = $page + 1;
+        if ($next > $totalPage) {
             $next = $totalPage;
         }
 
-?>    
+    ?>
 
-    <nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item d-<?php echo $page==1?'none':'block'; ?>">
-        <a class="page-link" href="<?php echo "?module=$module$urlFilter&page=$back"; ?>" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-        </a>
-        </li>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item d-<?php echo $page == 1 ? 'none' : 'block'; ?>">
+                    <a class="page-link" href="<?php echo "?module=$module&action=lists_client$urlFilter&page=$back"; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
 
-<?php
+                <?php
 
-        $pageS = $page-2;
-        if($pageS < 1){
-            $pageS = 1;
-        }
-        $pageE = $page+2;
-        if($pageE > $totalPage){
-            $pageE = $totalPage;
-        }    
+                $pageS = $page - 2;
+                if ($pageS < 1) {
+                    $pageS = 1;
+                }
+                $pageE = $page + 2;
+                if ($pageE > $totalPage) {
+                    $pageE = $totalPage;
+                }
 
-        for ($i=$pageS; $i <= $pageE; $i++):
+                for ($i = $pageS; $i <= $pageE; $i++) :
 
-?>
+                ?>
 
-        <li class="page-item <?php echo $page==$i?'active':''; ?>"><a class="page-link" href="<?php echo "?module=$module$urlFilter&page=$i"; ?>"><?php echo $i; ?></a></li>
+                    <li class="page-item <?php echo $page == $i ? 'active' : ''; ?>"><a class="page-link" href="<?php echo "?module=$module&action=lists_client$urlFilter&page=$i"; ?>"><?php echo $i; ?></a></li>
 
-<?php
+                <?php
 
-        endfor;
+                endfor;
 
-?>
+                ?>
 
-        <li class="page-item d-<?php echo $page==$totalPage?'none':'block'; ?>">
-        <a class="page-link" href="<?php echo "?module=$module$urlFilter&page=$next"; ?>" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-        </a>
-        </li>
-    </ul>
-    </nav>
+                <li class="page-item d-<?php echo $page == $totalPage ? 'none' : 'block'; ?>">
+                    <a class="page-link" href="<?php echo "?module=$module&action=lists_client$urlFilter&page=$next"; ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-<?php endif; ?>    
+    <?php endif; ?> 
+
 
 </div>
-
 

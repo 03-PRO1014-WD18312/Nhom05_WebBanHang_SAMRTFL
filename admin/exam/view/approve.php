@@ -1,5 +1,11 @@
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'exam', 'approve')){
+    redirect(_WEB_HOST_ERORR."/permission.php");
+}
+
 $body = getRequest('get');
 
 if(!empty($body['id'])){

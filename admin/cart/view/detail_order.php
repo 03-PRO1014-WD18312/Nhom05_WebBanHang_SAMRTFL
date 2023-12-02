@@ -2,6 +2,12 @@
 
 $body = getRequest('get');
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'order', 'detail')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
 
 if(!empty($body['id'])){
     $id = $body['id'];

@@ -2,6 +2,12 @@
 
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'book', 'lists')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
 $body = getRequest('get');
 
 $count = 0;
@@ -46,9 +52,9 @@ $type = getFlashData('type');
 <div class="container_my">
 
     <?php getAlert($msg, $type); ?>
-
+    <?php if(checkPermission($group_id, 'book', 'add')): ?>
     <a href="?module=<?php echo $module; ?>&action=add" class="btn btn-primary mb-3">Thêm <i class="fa fa-plus mx-1"></i></a>
-
+    <?php endif; ?>
     <form action="" method="get" class="mx-0 row">
 
         <input type="hidden" name="module" value="<?php echo $module; ?>">
@@ -84,10 +90,16 @@ $type = getFlashData('type');
                 <th width="15%" class="board_th">Ảnh</th>
                 <th width="10%" class="board_th">Loại sách</th>
                 <th width="30%" class="board_th">Mô tả</th>
+                <?php if(checkPermission($group_id, 'book', 'approve')): ?>
                 <th class="board_th">Trạng thái</th>
+                <?php endif; ?>
                 <th class="board_th">Giá</th>
+                <?php if(checkPermission($group_id, 'book', 'fix')): ?>
                 <th width="5%" class="board_th">Sửa</th>
+                <?php endif; ?>
+                <?php if(checkPermission($group_id, 'book', 'delete')): ?>
                 <th width="5%" class="board_th">Xóa</th>
+                <?php endif; ?>
             </tr>
         </thead>
         <tbody>
@@ -111,14 +123,20 @@ $type = getFlashData('type');
                 <td class="board_td text-center"><img width="80%" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$image; ?>" alt=""></td>
                 <td class="board_td text-center"><a href=""><?php echo $t_name; ?></a></td>
                 <td class="board_td text-center"><?php echo html_entity_decode($description); ?></td>
+                <?php if(checkPermission($group_id, 'book', 'approve')): ?>
                 <td class="board_td text-center"><a href="?module=<?php echo $module.'&action=approve&id='.$id; ?>" class="btn btn-<?php echo !empty($status)?'success':'danger'; ?>"><?php echo !empty($status)?'Duyệt':'Chưa duyệt'; ?></a></td>
+                <?php endif; ?>
                 <td class="board_td text-center"><?php echo $price; ?> VND</td>
+                <?php if(checkPermission($group_id, 'book', 'fix')): ?>
                 <td class="board_td text-center">
                     <a href="<?php echo '?module='.$module.'&action=fix&id='.$id; ?>" class="btn btn-warning"><i class="fa fa-wrench"></i></a>
                 </td>
+                <?php endif; ?>
+                <?php if(checkPermission($group_id, 'book', 'delete')): ?>
                 <td class="board_td text-center">
                     <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>
+                <?php endif; ?>
             </tr>
 
         <?php
