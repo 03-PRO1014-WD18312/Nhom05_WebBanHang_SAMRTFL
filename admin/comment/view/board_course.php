@@ -2,6 +2,12 @@
 
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'comment', 'comment_course')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
 $body = getRequest('get');
 
 $count = 0;
@@ -10,19 +16,8 @@ $urlFilter = '';
 
 if(!empty($body['keywork'])){
     $keywork = $body['keywork'];
-    $filter .= " WHERE `name` LIKE '%$keywork%' ";
+    $filter .= " AND `comment` LIKE '%$keywork%' ";
     $urlFilter .= "&keywork=$keywork";
-}
-
-if(!empty($body['book_type_id'])){
-    $book_type_id = $body['book_type_id'];
-
-    if(!empty($filter)){
-        $filter .= " AND `book_type_id` = '$book_type_id' ";
-    }else{
-        $filter .= " WHERE `book_type_id` = '$book_type_id' ";        
-    }
-    $urlFilter .= "&book_type_id=$book_type_id";
 }
 
 
@@ -47,22 +42,10 @@ $type = getFlashData('type');
     <form action="" method="get" class="mx-0 row">
 
         <input type="hidden" name="module" value="<?php echo $module; ?>">
+        <input type="hidden" name="action" value="<?php echo 'lists_course'; ?>">
 
-        <div class="form-group col-7">
+        <div class="form-group col-10">
             <input type="text" name="keywork" value="<?php echo !empty($keywork)?$keywork:''; ?>" class="form-control">
-        </div>
-
-
-        <div class="form-group col-3">
-            <select name="id_group" class="form-control">
-                <option value="">Chọn</option>
-                <?php
-                    if(!empty($allBookType)):
-                        foreach ($allBookType as $key => $value):
-                ?>
-                <option <?php echo !empty($book_type_id) && $book_type_id == $value['id']?'selected':''; ?> value="<?php echo $value['id']; ?>"><?php echo $value['name'].' - '.$value['id']; ?></option>
-                <?php endforeach; endif; ?>
-            </select>
         </div>
 
         <div class="form-group col-2">
@@ -77,11 +60,12 @@ $type = getFlashData('type');
         <thead>
             <tr>
                 <th width="2%" class="board_th">STT</th>
-                <th width="5%" class="board_th">Tên sản phẩm</th>
                 <th width="5%" class="board_th">Tên danh mục</th>
+                <th width="5%" class="board_th">Tên sản phẩm</th>
                 <th width="15%" class="board_th">Nội dung</th>
                 <th width="10%" class="board_th">Thông tin người bình luận </th>
                 <th width="10%" class="board_th">Ngày bình luận</th>
+                <th width="5%" class="board_th">Chi tiết</th>
                 <th width="5%" class="board_th">Xóa</th>
             </tr>
         </thead>
@@ -98,10 +82,10 @@ $type = getFlashData('type');
         
                         
             <tr>
-                <td class="board_td text-center"><a href="?module=user&id="></a><?php echo $id; ?></td>    
+                <td class="board_td text-center"><a href=""></a><?php echo $id; ?></td>    
                 <td class="board_td text-center"><a href=""><?php echo $name; ?></a></td>
                 <td class="board_td text-center"><a href=""><?php echo $title; ?></a></td>
-                <td class="board_td text-center"><a href=""><?php echo $comment; ?></a></td>
+                <td class="board_td"><?php echo $comment; ?></td>
                 
                 
 
@@ -111,8 +95,10 @@ $type = getFlashData('type');
                         <p>Số điện thoại: <a href=""><?php echo $phone; ?></a></p> 
                     </td>
                  
-                <td class="board_td text-center"><a href=""><?php echo $create_at; ?></a></td>
-                
+                <td class="board_td text-center"><a href=""><?php echo getTimeFormat($create_at, 'Y/m/d'); ?></a></td>
+                <td class="board_td text-center">
+                    <a href="?module=comment&action=children_course&id=<?php echo $id; ?>" onclick="" class="btn btn-success"> <i class="fa fa-comment"></i></a>
+                </td>
                 <td class="board_td text-center">
                     <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>

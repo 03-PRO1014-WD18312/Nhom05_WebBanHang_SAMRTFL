@@ -6,6 +6,8 @@ $count = 0;
 $filter = '';
 $urlFilter = '';
 
+$id_group = _MY_DATA['id_group'];
+
 if(!empty($body['page'])){
     $page = $body['page'];
 }else{
@@ -65,9 +67,15 @@ if(!empty($body['view'])){
         <tr>
             <th width="10%" class="board_th">STT</th>
             <th class="board_th">Tên</th>
+            <?php if(checkPermission($id_group, 'group', 'permission')): ?>
             <th width="20%" class="board_th">Phân quyền</th>
+            <?php endif; ?>
+            <?php if(!empty(checkPermission($id_group, 'group', 'fix'))): ?>
             <th width="10%" class="board_th">Sửa</th>
+            <?php endif; ?>
+            <?php if(!empty(checkPermission($id_group, 'group', 'delete'))): ?>
             <th width="10%" class="board_th">Xóa</th>
+            <?php endif; ?>
         </tr>
     </thead>
 
@@ -85,15 +93,21 @@ if(!empty($body['view'])){
         <tr>
             <td class="board_td text-center"><?php echo $count; ?></td>
             <td class="board_td"><?php echo $name; ?></td>
+            <?php if(checkPermission($id_group, 'group', 'permission')): ?>
             <td class="board_td text-center">
                 <a href="<?php echo '?module=permission&id='.$id; ?>" class="btn btn-success"><i class="fa fa-cog"></i></a>
             </td>
+            <?php endif; ?>
+            <?php if(!empty(checkPermission($id_group, 'group', 'fix'))): ?>
             <td class="board_td text-center">
                 <a href="<?php echo '?module='.$module.'&view=fix&id='.$id; ?>" class="btn btn-warning"><i class="fa fa-wrench"></i></a>
             </td>
+            <?php endif; ?>
+            <?php if(checkPermission($id_group, 'group', 'delete')): ?>
             <td class="board_td text-center">
                 <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
             </td>
+            <?php endif; ?>
         </tr>
 
     <?php

@@ -2,6 +2,10 @@
 <?php 
 
 
+$group_id = _MY_DATA['id_group'];
+
+if(checkPermission($group_id, 'exam_type', 'add')):
+
 if(is_Post()){
 
     $data = getRequest();
@@ -57,6 +61,6 @@ $old = getFlashData('old');
 </div>
 <button type="submit" class="btn btn-primary">Thêm</button>
 
-
-
 </form>
+<?php endif; ?>
+ 

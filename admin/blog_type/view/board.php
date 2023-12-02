@@ -1,6 +1,15 @@
 <?php
 // model('board', 'admin', 'blog_type');
 
+
+
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'blog_type', 'lists')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
+
 $body = getRequest('get');
 
 $count = 0;
@@ -65,8 +74,12 @@ if(!empty($body['view'])){
         <tr>
             <th width="10%" class="board_th">STT</th>
             <th class="board_th">Tên</th>
+            <?php if(checkPermission($group_id, 'blog_type', 'fix')): ?>
             <th width="10%" class="board_th">Sửa</th>
+            <?php endif; ?>
+            <?php if(checkPermission($group_id, 'blog_type', 'delete')): ?>
             <th width="10%" class="board_th">Xóa</th>
+            <?php endif; ?>
         </tr>
     </thead>
 
@@ -84,12 +97,16 @@ if(!empty($body['view'])){
         <tr>
             <td class="board_td text-center"><?php echo $count; ?></td>
             <td class="board_td"><?php echo $name; ?></td>
+            <?php if(checkPermission($group_id, 'blog_type', 'fix')): ?>
             <td class="board_td text-center">
                 <a href="<?php echo '?module='.$module.'&view=fix&id='.$id; ?>" class="btn btn-warning"><i class="fa fa-wrench"></i></a>
             </td>
+            <?php endif; ?>
+            <?php if(checkPermission($group_id, 'blog_type', 'delete')): ?>
             <td class="board_td text-center">
                 <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
             </td>
+            <?php endif; ?>
         </tr>
 
     <?php

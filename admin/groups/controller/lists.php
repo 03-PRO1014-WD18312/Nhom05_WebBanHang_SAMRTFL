@@ -1,5 +1,11 @@
 <?php
 
+$id_group = _MY_DATA['id_group'];
+
+if(empty(checkPermission($id_group, 'group', 'lists'))){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
 $data = [
     'titlePage' => 'Nhóm'
 ];
@@ -11,5 +17,5 @@ layout('breadcrumb', 'admin', $data);
 view('board', 'admin', 'groups');
 
 layout('footer', 'admin');
-
+die;
 ?>

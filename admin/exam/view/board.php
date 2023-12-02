@@ -2,6 +2,12 @@
 
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'exam', 'lists')){
+    redirect(_WEB_HOST_ERORR."/permission.php");
+}
+
 $body = getRequest('get');
 
 $count = 0;
@@ -53,9 +59,9 @@ $type = getFlashData('type');
 <div class="container_my">
 
 <?php getAlert($msg, $type); ?>
-
+    <?php if(checkPermission($group_id, 'exam', 'add')): ?>
     <a href="?module=exam&action=add" class="btn btn-primary mb-3">Thêm <i class="fa fa-plus mx-1"></i></a>
-
+    <?php endif; ?>
     <form action="" method="get" class="mx-0 row">
 
         <input type="hidden" name="module" value="<?php echo $module; ?>">
@@ -104,9 +110,15 @@ $type = getFlashData('type');
                 <th width="10%" class="board_th">Người đăng</th>
                 <th width="15%" class="board_th">Giờ bán</th>
                 <th width="15%" class="board_th">Giờ làm</th>
+                <?php if(checkPermission($group_id, 'exam', 'approve')): ?>
                 <th width="10%" class="board_th">Trạng thái</th>
+                <?php endif; ?>
+                <?php if(checkPermission($group_id, 'exam', 'fix')): ?>
                 <th width="5%" class="board_th">Sửa</th>
+                <?php endif; ?>
+                <?php if(checkPermission($group_id, 'exam', 'delete')): ?>
                 <th width="5%" class="board_th">Xóa</th>
+                <?php endif; ?>
             </tr>
         </thead>
         <tbody>
@@ -135,13 +147,19 @@ $type = getFlashData('type');
                     <span>Giờ bắt đầu: <br> <?php echo $item['time_start']; ?></span> <br>
                     <span>Số phút làm: <br> <?php echo $item['time_make']; ?></span> <br>
                 </td>
+                <?php if(checkPermission($group_id, 'exam', 'approve')): ?>
                 <td class="board_td text-center"><a href="?module=exam&action=approve&id=<?php echo $item['id']; ?>" class="btn btn-<?php echo $item['status']==1?'success':'danger'; ?>"><?php echo $item['status']==1?'Duyệt':'Chưa Duyệt'; ?></a></td>
+                <?php endif; ?>
+                <?php if(checkPermission($group_id, 'exam', 'fix')): ?>
                 <td class="board_td text-center">
                     <a href="<?php echo '?module='.$module.'&action=fix&id='.$item['id']; ?>" class="btn btn-warning"><i class="fa fa-wrench"></i></a>
                 </td>
+                <?php endif; ?>
+                <?php if(checkPermission($group_id, 'exam', 'delete')): ?>
                 <td class="board_td text-center">
                     <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>
+                <?php endif; ?>
             </tr>
 
         <?php

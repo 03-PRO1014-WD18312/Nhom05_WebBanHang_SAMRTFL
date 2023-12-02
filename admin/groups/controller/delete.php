@@ -1,5 +1,11 @@
 <?php
 
+$id_group = _MY_DATA['id_group'];
+
+if(empty(checkPermission($id_group, 'group', 'delete'))){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
 $body = getRequest('get');
 
 if(!empty($body['id'])){

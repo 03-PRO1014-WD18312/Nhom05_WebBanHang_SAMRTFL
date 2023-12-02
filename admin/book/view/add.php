@@ -1,6 +1,11 @@
 
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'book', 'add')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
 
 require _WEB_PATH_ROOT.'/admin/book/model/add.php';
 

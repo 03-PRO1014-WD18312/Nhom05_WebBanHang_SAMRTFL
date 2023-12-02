@@ -1,5 +1,12 @@
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'option', 'slide')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
+
 $arrSlide = json_decode(getRow("SELECT * FROM options WHERE opt_key='web_slide'")['opt_value'], true);
 
 

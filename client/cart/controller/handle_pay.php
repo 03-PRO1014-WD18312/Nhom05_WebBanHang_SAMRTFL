@@ -2,6 +2,26 @@
 
 <?php
 
+$errorQuantity = true;
+$user_id = isLogin()['user_id'];
+$allCart = getRaw("SELECT * FROM cart WHERE user_id='$user_id'");
+
+foreach ($allCart as $key => $value) {
+    $book_id = $value['book_id'];
+    $detailBook = getRow("SELECT quantity FROM book WHERE id='$book_id'");
+    if($value['quantity'] > $detailBook['quantity']){
+        $errorQuantity = false;
+        break;
+    }
+}
+
+if(empty($errorQuantity)){
+    setFlashData('msg', 'Không đủ số lượng hàng');
+    setFlashData('type', 'danger');
+    redirect('?module=cart');
+    die;
+}
+
 $body = getRequest('post');
 
 if(empty($body['fullname'])){
