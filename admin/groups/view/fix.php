@@ -1,6 +1,12 @@
 
 <?php 
 
+$id_group = _MY_DATA['id_group'];
+
+
+if(!empty(checkPermission($id_group, 'group', 'fix'))):
+
+
 $body = getRequest('get');
 
 if(!empty($body['id'])){
@@ -84,3 +90,5 @@ if(empty($old)){
 </form>
 <hr>
 <a href="?module=groups" class="btn btn-success">Thêm</a>
+
+<?php endif; ?>

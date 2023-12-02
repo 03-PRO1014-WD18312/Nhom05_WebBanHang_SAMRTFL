@@ -1,5 +1,12 @@
 <?php
 
+$group_id = _MY_DATA['id_group'];
+
+if(!checkPermission($group_id, 'option', 'footer')){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
+
+
 $optFH = getRow("SELECT * FROM options WHERE opt_key='web_footer_header'");
 $optFF = getRow("SELECT * FROM options WHERE opt_key='web_footer_footer'");
 

@@ -2,7 +2,7 @@
 
 $data = [
 
-    'titlePage' => 'Biểu đồ số lượng sản phẩm theo danh mục'
+    'titlePage' => 'Biểu đồ thống kê '
 ];
 layout('header', 'admin', $data);
 ?>

@@ -1,6 +1,10 @@
 
 <?php 
 
+$group_id = _MY_DATA['id_group'];
+
+if(checkPermission($group_id, 'course_type', 'fix')):
+
 $body = getRequest('get');
 
 if(!empty($body['id'])){
@@ -83,3 +87,5 @@ if(empty($old)){
 </form>
 <hr>
 <a href="?module=course_type" class="btn btn-success">Thêm</a>
+
+<?php endif; ?>

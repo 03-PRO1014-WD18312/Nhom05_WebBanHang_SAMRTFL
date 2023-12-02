@@ -1,5 +1,11 @@
 <?php
 
+$id_group = _MY_DATA['id_group'];
+
+if(!checkPermission($id_group, 'group', 'permission')){
+    redirect(_WEB_HOST_ERORR."/permission.php");
+}
+
 $body = getRequest("get");
 
 $id = $body['id'];
