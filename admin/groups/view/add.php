@@ -1,6 +1,9 @@
 
 <?php 
 
+$id_group = _MY_DATA['id_group'];
+
+if(!empty(checkPermission($id_group, 'group', 'add'))):
 
 if(is_Post()){
 
@@ -60,3 +63,5 @@ $old = getFlashData('old');
 
 
 </form>
+
+<?php endif; ?>

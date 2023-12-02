@@ -101,13 +101,12 @@ $web_twitter = getRow("SELECT opt_value FROM options WHERE opt_key='web_twitter'
 
     <nav class="padding_X d-flex justify-content-around py-3 border-top">
         <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Trang chủ</a>
-        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Giới thiệu</a>
-        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Liên hệ</a>
+        <a href="<?php echo _WEB_HOST_ROOT.'?module=smartfl&action=about'; ?>" class="font-weight-bold text-decoration-none">Giới thiệu</a>
+        <a href="<?php echo _WEB_HOST_ROOT.'?module=smartfl&action=contact';; ?>" class="font-weight-bold text-decoration-none">Liên hệ</a>
         <a href="<?php echo _WEB_HOST_ROOT.'?module=course'; ?>" class="font-weight-bold text-decoration-none">Khóa học</a>
         <a href="<?php echo _WEB_HOST_ROOT.'?module=book'; ?>" class="font-weight-bold text-decoration-none">Sách</a>
         <a href="<?php echo _WEB_HOST_ROOT.'?module=exam'; ?>" class="font-weight-bold text-decoration-none">Thi Online</a>
         <a href="<?php echo _WEB_HOST_ROOT.'?module=blog'; ?>" class="font-weight-bold text-decoration-none">Bài viết</a>
-        <a href="<?php echo _WEB_HOST_ROOT; ?>" class="font-weight-bold text-decoration-none">Vinh danh</a>
     </nav>
 
 

@@ -1,4 +1,8 @@
+<?php
 
+$group_id = _MY_DATA['id_group'];
+
+?>
 
 <div class="sidebar_profile">
 
@@ -8,6 +12,9 @@
 </div>
 
 <ul class="sidebar_nav bg-white">
+    <?php if($group_id != 4): ?>
+    <a href="<?php echo _WEB_HOST_ROOT_ADMIN; ?>" class="p-2 d-block border text-decoration-none">Trang quản trị</a>
+    <?php endif; ?>  
     <a href="?module=profile" class="p-2 d-block border text-decoration-none">Thông tin người dùng</a>
     <a href="?module=profile&action=course" class="p-2 d-block border text-decoration-none">Các khóa học đã mua</a>
     <a href="?module=profile&action=result_exam" class="p-2 d-block border text-decoration-none">Điểm các bài kiểm tra</a>
