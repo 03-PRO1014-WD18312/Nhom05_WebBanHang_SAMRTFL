@@ -73,11 +73,12 @@ $count = 0;
                             </td>
                             <td class="board_td text-center">
                                 <?php
-
                                 if (!empty($temp2) && !empty($b['price'])) {
                                     $doanhthu = $b['price'] * $temp2;
+                                    $temp2 = 0;
                                 }
                                 echo $doanhthu;
+                                $doanhthu = 0;
                                 ?>
                             </td>
                         </tr>

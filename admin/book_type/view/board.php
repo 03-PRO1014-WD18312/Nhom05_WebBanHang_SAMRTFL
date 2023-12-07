@@ -26,7 +26,8 @@ if(!empty($body['keywork'])){
 
 require _WEB_PATH_ROOT.'/admin/book_type/model/board.php';
 
-
+$msgdl = getFlashData('msgdl');
+$typedl = getFlashData('typedl');
 
 ?>
 
@@ -50,6 +51,8 @@ if(!empty($body['view'])){
 
     <h5>Danh sách Loại sách</h5>
     <hr>
+
+    <?php getAlert($msgdl, $typedl); ?>
 
     <form action="" method="get" class="">
         <div class="row mx-0">
@@ -100,7 +103,7 @@ if(!empty($body['view'])){
             <?php endif; ?>
             <?php if(checkPermission($group_id, 'book_type', 'delete')): ?>
             <td class="board_td text-center">
-                <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
+                <a href="?module=book_type&action=delete&id=<?php echo $id; ?>" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
             </td>
             <?php endif; ?>
         </tr>

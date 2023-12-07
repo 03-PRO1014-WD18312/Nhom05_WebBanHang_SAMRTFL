@@ -49,6 +49,8 @@ $allUser = getRaw("SELECT u.*, g.name AS 'g_name' from user AS u INNER JOIN grou
 $msg = getFlashData('msg');
 $type = getFlashData('type');
 
+$count = 0;
+
 ?>
 
 
@@ -119,7 +121,7 @@ $type = getFlashData('type');
         ?>
 
             <tr>
-                <td class="board_td text-center"><a href="?module=user&id="></a><?php echo $id; ?></td>
+                <td class="board_td text-center"><a href="?module=user&id="></a><?php echo $count; ?></td>
                 <td class="board_td">
                     
                     <p>Tên: <a href=""><?php echo $fullname; ?></a></p> 
@@ -143,7 +145,7 @@ $type = getFlashData('type');
                 <?php endif; ?>
                 <?php if(checkPermission($group_id, 'admin', 'delete_admin')): ?>
                 <td class="board_td text-center">
-                    <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
+                    <a href="?module=user&action=delete_admin&id=<?php echo $id; ?>" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>
                 <?php endif; ?>
             </tr>

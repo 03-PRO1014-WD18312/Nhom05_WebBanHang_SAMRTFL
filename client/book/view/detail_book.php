@@ -71,7 +71,7 @@ $type = getFlashData('type');
 
 <div class="box_detail_book">
 
-<img class="w-100" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$detailBook['image']; ?>" alt="">
+<img class="image_course" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$detailBook['image']; ?>" alt="">
 
 <div class="detail_book">
 

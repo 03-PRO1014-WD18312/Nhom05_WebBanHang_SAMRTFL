@@ -86,12 +86,12 @@ $type = getFlashData('type');
         <thead>
             <tr>
                 <th width="5%" class="board_th">STT</th>
-                <th width="10%" class="board_th">Tiêu đề</th>
+                <th width="15%" class="board_th">Tiêu đề</th>
                 <th width="15%" class="board_th">Ảnh</th>
-                <th width="10%" class="board_th">Loại sách</th>
+                <th width="7%" class="board_th">Số hàng</th>
                 <th width="30%" class="board_th">Mô tả</th>
                 <?php if(checkPermission($group_id, 'book', 'approve')): ?>
-                <th class="board_th">Trạng thái</th>
+                <th width="10%" class="board_th">Trạng thái</th>
                 <?php endif; ?>
                 <th class="board_th">Giá</th>
                 <?php if(checkPermission($group_id, 'book', 'fix')): ?>
@@ -119,9 +119,12 @@ $type = getFlashData('type');
 
             <tr>
                 <td class="board_td text-center"><?php echo $count; ?></td>
-                <td class="board_td text-center"><a href="?module=book&id=<?php echo $id; ?>"><?php echo $title; ?></a></td>
+                <td class="board_td">
+                    <p><?php echo $title; ?></p>
+                    <p>loại: <?php echo $t_name; ?></p>
+                </td>
                 <td class="board_td text-center"><img width="80%" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$image; ?>" alt=""></td>
-                <td class="board_td text-center"><a href=""><?php echo $t_name; ?></a></td>
+                <td class="board_td text-center"><?php echo $quantity; ?></td>
                 <td class="board_td text-center"><?php echo html_entity_decode($description); ?></td>
                 <?php if(checkPermission($group_id, 'book', 'approve')): ?>
                 <td class="board_td text-center"><a href="?module=<?php echo $module.'&action=approve&id='.$id; ?>" class="btn btn-<?php echo !empty($status)?'success':'danger'; ?>"><?php echo !empty($status)?'Duyệt':'Chưa duyệt'; ?></a></td>
@@ -134,7 +137,7 @@ $type = getFlashData('type');
                 <?php endif; ?>
                 <?php if(checkPermission($group_id, 'book', 'delete')): ?>
                 <td class="board_td text-center">
-                    <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
+                    <a href="?module=book&action=delete&id=<?php echo $id; ?>" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>
                 <?php endif; ?>
             </tr>
@@ -152,7 +155,7 @@ $type = getFlashData('type');
 
     <br>
 
-<!-- <?php
+<?php
     if(!empty($totalPage) && $totalPage > 1 ):
 
         $back = $page-1;
@@ -205,7 +208,7 @@ $type = getFlashData('type');
     </ul>
     </nav>
 
-<?php endif; ?>     -->
+<?php endif; ?>    
 
 </div>
 

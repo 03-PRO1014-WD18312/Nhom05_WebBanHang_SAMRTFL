@@ -6,10 +6,16 @@ $optFF = getRow("SELECT * FROM options WHERE opt_key='web_footer_footer'");
 $arrFH = json_decode($optFH['opt_value'], true);
 $strFF = $optFF['opt_value'];
 
+$body = getRequest('get');
+
+if(!empty($body['make_exam'])){
+    $make_exam = true;
+}
+
 ?>
 
 
-<footer class="box_footer">
+<footer class="box_footer <?php echo isset($make_exam)?'d-none':''; ?>">
 
 
 <div class="footer_end">

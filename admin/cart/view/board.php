@@ -102,9 +102,9 @@ $type = getFlashData('type');
                 <?php if(checkPermission($group_id, 'order', 'detail')): ?>
                 <th width="5%" class="board_th">Chi tiết</th>
                 <?php endif; ?>
-                <?php if(checkPermission($group_id, 'order', 'delete')): ?>
+                <!-- <?php if(checkPermission($group_id, 'order', 'delete')): ?>
                 <th width="5%" class="board_th">Xóa</th>
-                <?php endif; ?>
+                <?php endif; ?> -->
             </tr>
         </thead>
         <tbody>
@@ -173,11 +173,11 @@ $type = getFlashData('type');
                     <a href="?module=cart&action=detail_order&id=<?php echo $value['id']; ?>"  class="btn btn-success"><i class="fa fa-shopping-cart"></i></a>
                 </td>
                 <?php endif; ?>
-                <?php if(checkPermission($group_id, 'order', 'delete')): ?>
+                <!-- <?php if(checkPermission($group_id, 'order', 'delete')): ?>
                 <td class="board_td text-center">
                     <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>
-                <?php endif; ?>
+                <?php endif; ?> -->
             </tr>
             <?php endforeach; else: ?>
                 <td class="board_td text-center text-danger" colspan="10">Không có đơn hàng nào</td>

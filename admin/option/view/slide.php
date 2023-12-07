@@ -83,6 +83,7 @@ $type = getFlashData('type');
 
 <div class="container_my">
 
+<?php getAlert($msg, $type); ?>
 
 <div id="carouselExampleControls" class="carousel slide my-3" data-ride="carousel">
   <div class="carousel-inner">
@@ -108,9 +109,6 @@ $type = getFlashData('type');
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-
-<?php getAlert($msg, $type); ?>
 
 <form action="" method="post"  enctype="multipart/form-data">
 

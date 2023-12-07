@@ -67,6 +67,24 @@ h1, h2, h3, h4, h5, h6, p{
     text-align: start;
 }
 
+.image_book{
+    width: 75%;
+    transition: all .5s;
+}
+
+.image_book:hover{
+    width: 80%;
+}
+
+.image_course{
+    width: 95%;
+    transition: all .5s;
+}
+
+.image_course:hover{
+    width: 100%;
+}
+
 /* header */
 
 .box_header{
@@ -78,6 +96,19 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 /* header */
+
+/* contact */
+
+.home_contact{
+    padding: 10px;
+    border-top: 7px solid #007bff;
+    border-left: 7px solid #007bff;
+    border-right: 7px solid #ffc107;
+    border-bottom: 7px solid #ffc107;
+    border-radius: 15px;
+}
+
+/* contact */
 
 /* home content */
 
@@ -95,12 +126,50 @@ h1, h2, h3, h4, h5, h6, p{
 
 }
 
+.type_banner{
+    border-top: 3px solid #007bff;
+    border-left: 3px solid #007bff;
+    border-right: 3px solid #ffc107;
+    border-bottom: 3px solid #ffc107;
+    /* border: 2px solid #007bff; */
+}
+
 .contact_header{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
 /* menu_banner_home */
+
+/* book_hot */
+
+.book_hot{
+    display: flex;
+    justify-content: space-between;
+}
+
+.item_book_hot{
+    border: 1px solid black;
+    width: 24%;
+    padding: 10px;
+    border-top: 3px solid red;
+    border-left: 3px solid red;
+    border-right: 3px solid rgb(21, 200, 21);
+    border-bottom: 3px solid rgb(21, 200, 21);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.item_book_hot img{
+    width: 90%;
+    transition: all 0.5s;
+}
+
+.item_book_hot img:hover{
+    width: 100%;
+}
+
+/* book_hot */
 
 /* course_home */
 
@@ -111,6 +180,7 @@ h1, h2, h3, h4, h5, h6, p{
     grid-template-columns: repeat(4, 1fr);
 
     column-gap: 10px;
+    row-gap: 10px;
 
 
 }
@@ -170,6 +240,8 @@ h1, h2, h3, h4, h5, h6, p{
 .item_blog{
     display: grid;
     grid-template-columns: 1fr 2.5fr;
+    border-radius: 10px;
+    border: 2px solid #007bff;
 }
 
 

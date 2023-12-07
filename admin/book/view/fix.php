@@ -53,6 +53,10 @@ if(is_Post()){
         $errors['book_type_id'] = 'Vui lòng chọn thông tin';
     }
 
+    if(empty($data['quantity'])){
+        $errors['quantity'] = 'Vui lòng chọn thông tin';
+    }
+
     $quantity = $data['quantity'];
 
     if(empty($errors)){

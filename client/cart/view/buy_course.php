@@ -47,18 +47,18 @@ getAlert($msg, $type);
     <div class="course_pro">
         <img src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$detailCourse['image']; ?>" class="w-100 box_shadow" alt="">
         <hr>
-        <h5>Tiêu đề: <?php echo $detailCourse['title']; ?></h5>
+        <h5 class="text-primary">Tiêu đề: <span class="text-warning"><?php echo $detailCourse['title']; ?></span></h5>
         <br>
-        <h5>Giá: <?php echo !empty($detailCourse['discount'])?$detailCourse['discount']:$detailCourse['price']; ?> VND</h5>
+        <h5 class="text-primary">Giá: <span class="text-warning"><?php echo !empty($detailCourse['discount'])?$detailCourse['discount']:$detailCourse['price']; ?></span> VND</h5>
         <br>
-        <h5>Chương: <?php echo !empty($allChapter)?$allChapter:'0'; ?> chương</h5>
+        <h5 class="text-primary">Chương: <span class="text-warning"><?php echo !empty($allChapter)?$allChapter:'0'; ?></span> chương</h5>
     </div>
 
     <div class="" style="border-left: 10px solid #ffc107;">
         <div class="form_course mx-auto ">
             <form action="?module=course&action=handle_pay" method="post">
                 <h4 class="text-center text-warning ">CHỌN PHƯƠNG THỨC THANH TOÁN</h4>
-                <input type="hidden" name="price" value="<?php echo $detailCourse['price']; ?>">
+                <input type="hidden" name="price" value="<?php echo !empty($detailCourse['discount'])?$detailCourse['discount']:$detailCourse['price']; ?>">
                 <input type="hidden" name="id" value="<?php echo $detailCourse['id']; ?>">
                 <div class="row mx-0 py-4">
                     <div class="form-group col-3 text-center">
