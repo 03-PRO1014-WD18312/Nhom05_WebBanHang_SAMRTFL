@@ -91,7 +91,7 @@ else:
 ?>
 
 <div class="my-3">
-    <h3 class="text-center text-danger">CHƯA CÓ SẢN PHẨM NÀO</h3>
+    <h3 class="text-center text-danger" style="margin: 70px 0;">CHƯA CÓ SẢN PHẨM NÀO</h3>
 </div>
 
 <?php

@@ -12,14 +12,26 @@ if(!empty($body['id'])){
     $id = $body['id'];
     $detailGroup = getRow("SELECT id FROM groups WHERE id='$id'");
     if(!empty($detailGroup)){
-
+        $allUser = getCountRows("SELECT id FROM user WHERE id_group='$id'");
+        if(empty($allUser)){
+            if(delete('groups', "id='$id'")){
+                setFlashData('msgdl', 'Xóa thành công');
+                setFlashData('typedl', 'success');
+            }else{
+                setFlashData('msgdl', 'Lỗi hệ thống');
+                setFlashData('typedl', 'danger');
+            }
+        }else{
+            setFlashData('msgdl', 'Vẫn còn tài khoản có cấp bậc này');
+            setFlashData('typedl', 'danger');
+        }
     }else{
-        setFlashData('msg', 'Url này không tồn tại !!!');
-        setFlashData('type', 'danger');
+        setFlashData('msgdl', 'Url này không tồn tại !!!');
+        setFlashData('typedl', 'danger');
     }
 }else{
-    setFlashData('msg', 'url này lỗi !!!');
-    setFlashData('type', 'danger');
+    setFlashData('msgdl', 'url này lỗi !!!');
+    setFlashData('typedl', 'danger');
 }
 
 redirect($_SERVER['HTTP_REFERER']);

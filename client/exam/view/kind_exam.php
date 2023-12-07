@@ -14,20 +14,21 @@ if(!empty($allExam)):
 <br>
 
 <div class="owl-carousel owl-theme">
+<!-- <div class=""> -->
 
     <?php foreach ($allExam as $key => $value): ?>
     <div class="item">
     <div class="item_exam">
 
-    <a href="?module=exam&action=detail_exam&id=<?php echo $value['id']; ?>"><img class="w-100 mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
+    <a href="?module=exam&action=detail_exam&id=<?php echo $value['id']; ?>"><img class="image_course mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
 
     <h6><a href="?module=exam&action=detail_exam&id=<?php echo $value['id']; ?>" class="text-decoration-none"><?php echo $value['title']; ?></a></h6>
-    <p>Loại: <?php echo $value['t_name']; ?></p>
+    <p class="text-primary">Loại: <span class="text-warning"><?php echo $value['t_name']; ?></span></p>
 
     <div class="sub_item_exam">
         <small></small>
         <p class="mb-0"></p>
-        <span class="mb-0" style="text-align: end;"><?php echo $value['price']; ?> VND</span>
+        <span class="mb-0 text-primary" style="text-align: end;"> Giá: <span class="text-warning"><?php echo $value['price']; ?></span> VND</span>
     </div>
 
     </div>

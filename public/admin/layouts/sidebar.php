@@ -331,13 +331,13 @@ $group_id = _MY_DATA['id_group'];
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
+              <li class="nav-item">
                 <a href="?module=statistics&action=book" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sách</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Khóa học</p>
@@ -348,16 +348,16 @@ $group_id = _MY_DATA['id_group'];
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bài kiểm tra</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
 
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="pages/widgets.html" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Test
-                <span class="right badge badge-danger">New</span>
+                END SIDEBAR
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
@@ -374,4 +374,5 @@ $group_id = _MY_DATA['id_group'];
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
 

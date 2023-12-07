@@ -52,10 +52,11 @@ $web_twitter = getRow("SELECT opt_value FROM options WHERE opt_key='web_twitter'
 
     <header class="box_header padding_X">
 
-        <h1 class="logo_header text-primary">SMART<span class="text-warning">FL</span> </h1>
+        <h1 class="logo_header text-primary"><a class="text-decoration-none" href="<?php echo _WEB_HOST_ROOT; ?>">SMART<span class="text-warning">FL</span></a></h1>
 
         <form action="" method="get" class="search_header d-flex justify-content-around">
-            <input type="text" class="form-control flex_center">
+            <input type="hidden" name="module" value="book">
+            <input type="text" class="form-control flex_center" name="keywork">
         </form>
 
         <div class="btn_header d-flex justify-content-around">

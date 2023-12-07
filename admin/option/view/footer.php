@@ -20,6 +20,12 @@ if(is_Post()){
 
     $dataHeader = $data['footerH'];
 
+    if(count($dataHeader) > 4){
+        setFlashData('msg', 'Số cột footer không được quá 4');
+        setFlashData('type', 'danger');
+        redirect('?module=option&action=footer');
+    }
+
     $dataFooter = $data['footerF'];
 
     $strHeader = json_encode($dataHeader);

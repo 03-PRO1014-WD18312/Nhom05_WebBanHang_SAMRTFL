@@ -16,7 +16,7 @@ require _WEB_PATH_ROOT . '/client/home/model/menu_banner.php';
                 if (!empty($allBookType)) {
                     foreach ($allBookType as $value) {
                 ?>
-                        <a href="?module=book&book_type=<?php echo $value['id']; ?>" class="list-group-item py-1 px-2 text-decoration-none text-dark"><?= $value['name'] ?></a>
+                        <a href="?module=book&book_type=<?php echo $value['id']; ?>" class="py-1 px-2 text-decoration-none text-dark type_banner"><?= $value['name'] ?></a>
                 <?php
                     }
                 }

@@ -40,10 +40,10 @@ getAlert($msg, $type);
 
 <div class="detail_exam">
 
-<img class="w-100 bra-10" src="<?php echo _WEB_HOST_TEMPLATE.'/client/assets/image/exam.jpg'; ?>" alt="">
+<img class="image_course bra-10 mx-auto" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$detailExam['image']; ?>" alt="">
 
 <div class="exam_time p-3 bg-white bra-10 border">
-    <h4><?php echo $detailExam['title']; ?></h4>
+    <h4 class="text-primary"><?php echo $detailExam['title']; ?></h4>
     <ul>
         <li>Trạng thái:</li>
         <li>Số câu hỏi: <?php echo !empty($numberQuestionExam)?$numberQuestionExam:'0'; ?></li>

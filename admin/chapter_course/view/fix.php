@@ -1,6 +1,10 @@
 
 <?php 
 
+$id_group = _MY_DATA['id_group'];
+
+if(empty(!checkPermission($id_group, 'chapter_course', 'fix'))):
+
 $body = getRequest('get');
 
 if(!empty($body['chapter_id']) && !empty($body['id'])){
@@ -82,3 +86,5 @@ if(empty($old)){
 
 <hr>
 <a href="?module=chapter_course&id=<?php echo $id; ?>" class="btn btn-success">Thêm</a>
+
+<?php endif; ?>

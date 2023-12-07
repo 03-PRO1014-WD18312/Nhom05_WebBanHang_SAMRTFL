@@ -1,5 +1,10 @@
 <?php
 
+$id_group = _MY_DATA['id_group'];
+
+if(empty(checkPermission($id_group, 'exercise_course', 'lists'))){
+    redirect(_WEB_HOST_ERORR.'/permission.php');
+}
 
 $body = getRequest('get');
 
@@ -41,6 +46,9 @@ if(!empty($body['chapter_id'])){
     redirect('?module=course');
 }
 
+$msgdl = getFlashData('msgdl');
+$typedl = getFlashData('typedl');
+
 ?>
 
 
@@ -60,6 +68,9 @@ if(!empty($body['chapter_id'])){
     <div>
     <h5>Danh sách bài</h5>
     <hr>
+
+    <?php getAlert($msgdl, $typedl); ?>
+
     <form action="" method="get" class="mx-0 row">
 
         <input type="hidden" name="module" value="<?php echo $module; ?>">
@@ -82,8 +93,12 @@ if(!empty($body['chapter_id'])){
             <tr>
                 <th width="5%" class="board_th">STT</th>
                 <th width="" class="board_th">Tiêu đề</th>
+                <?php if(checkPermission($id_group, 'exercise_course', 'fix')): ?>
                 <th width="5%" class="board_th">Sửa</th>
+                <?php endif; ?>
+                <?php if(checkPermission($id_group, 'exercise_course', 'delete')): ?>
                 <th width="5%" class="board_th">Xóa</th>
+                <?php endif; ?>
             </tr>
         </thead>
         <tbody>
@@ -99,12 +114,16 @@ if(!empty($body['chapter_id'])){
             <tr>
                 <td class="board_td text-center"><?php echo $count; ?></td>
                 <td class="board_td"><?php echo $item['title']; ?></td>
+                <?php if(checkPermission($id_group, 'exercise_course', 'fix')): ?>
                 <td class="board_td text-center">
                     <a href="<?php echo '?module='.$module."&view=fix&chapter_id=$chapter_id&id=".$item['id']; ?>" class="btn btn-warning"><i class="fa fa-wrench"></i></a>
                 </td>
+                <?php endif; ?>
+                <?php if(checkPermission($id_group, 'exercise_course', 'delete')): ?>
                 <td class="board_td text-center">
-                    <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
+                    <a href="?module=exercise_course&action=delete&id=<?php echo $item['id']; ?>" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>
+                <?php endif; ?>
             </tr>
 
         <?php

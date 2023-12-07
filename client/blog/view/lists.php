@@ -63,23 +63,23 @@ require _WEB_PATH_ROOT . '/client/blog/model/lists.php';
         foreach ($allBlog as $value) {
             extract($value);
     ?>
-            <div class="item_course border">
+<div class="item_course border">
 
-                <a href="?module=blog&action=detail_blog&id=<?= $id ?>">
-                    <img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_TEMPLATE . '/client/assets/image/' . $image; ?>" alt="">
-                </a>
-                <h6><a href="?module=blog&action=detail_blog&id=<?= $id ?>" class="text-decoration-none"><?= $title ?></a></h6>
-                <p>Loại: <?php echo $value['t_name']; ?></p>
+<a href="?module=blog&action=detail_blog&id=<?php echo $value['id']; ?>"><img class="image_course mx-auto d-block mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
+<hr>
 
-                <div class="mt-3" style="text-align: end;">
-                    <p>Ngày đăng: <?= getTimeFormat($create_at, 'Y-m-d') ?></p>
-                </div>
+<h6><a href="?module=blog&action=detail_blog&id=<?php echo $value['id']; ?>" class="text-decoration-none"><?php echo $value['title']; ?></a></h6>
+<p class="text-primary">Loại: <span  class="text-warning"><?php echo $value['t_name']; ?></span></p>
 
-            </div>
+<div class=" mt-3">
+    <p style="text-align: end;" class="text-primary">Ngày đăng: <span class="text-warning"><?php echo getTimeFormat($value['create_at'], 'Y-m-d'); ?></span></p>
+</div>
+
+</div>
     <?php
         }
     }
     ?>
 </div>
         
-<?php if(empty($allBlog)) echo '<h3 class="text-center text-danger">Không có dữ liệu</h3>'; ?>
+<?php if(empty($allBlog)) echo '<h3 class="text-center text-danger" style="margin: 70px 0;">Không có dữ liệu</h3>'; ?>

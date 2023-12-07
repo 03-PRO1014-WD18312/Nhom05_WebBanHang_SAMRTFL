@@ -9,7 +9,7 @@ if(!empty($body['cart_id'])){
         $book_id = $detailCart['book_id'];
         $quantity = $detailCart['quantity']+1;
         $detailBook = getRow("SELECT id, quantity FROM book WHERE id='$book_id'");
-        if($quantity > 10) $quantity = 10;
+        // if($quantity > 10) $quantity = 10;
         $dataUpdate = [
             'quantity' => $quantity
         ];

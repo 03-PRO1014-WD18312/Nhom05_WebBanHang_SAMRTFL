@@ -149,7 +149,7 @@ $type = getFlashData('type');
                         <?php endif; ?>
                         <?php if(checkPermission($group_id, 'blog', 'delete')): ?>
                         <td class="board_td text-center">
-                            <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
+                            <a href="?module=blog&action=delete&id=<?php echo $id; ?>" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                         </td>
                         <?php endif; ?>
                     </tr>

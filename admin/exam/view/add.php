@@ -77,11 +77,10 @@ if(is_Post()){
             'time_make' => $data['time_make'],
             'time_end' => $time_end,
             'exam_type_id' => $data['exam_type_id'],
-            // 'description' => $data['description'],
             'price' => $data['price'],
             'create_at' => date('Y-m-d H:i:s'),
             'status' => 0,
-            'author_id' => 1,
+            'author_id' => _MY_DATA['id'],
         ];
 
         if(!empty($_FILES['image']['name'])){
@@ -183,12 +182,6 @@ $old = getFlashData('old');
     <input type="text" name="price" value="<?php echo !empty($old['price'])?$old['price']:''; ?>" class="form-control">   
     <?php !empty($errors['price'])?formError($errors['price']):''; ?>
     </div>
-
-    <!-- <div class="form-group col-12">
-    <label for="">Mô tả</label>
-    <textarea name="description" id="" cols="30" rows="10" class="ckediter"><?php echo !empty($old['description'])?$old['description']:''; ?></textarea>
-    <?php !empty($errors['description'])?formError($errors['description']):''; ?>
-    </div> -->
 
     <div class="form-group col-12">
     <input type="submit" value="Thêm" class="form-control btn btn-primary">   

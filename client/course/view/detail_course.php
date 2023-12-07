@@ -89,7 +89,7 @@ $type = getFlashData('type');
                 foreach ($allChapter as $chapter):
         ?>
         <div class="ex_course">
-            <p class="p-3 bg-primary ex_chapter btn m-0  w-100 text-light bra-0"><?php echo $chapter['name']; ?></p>
+            <p class="p-3 bg-primary ex_chapter btn m-0  w-100 text-light bra-0" style="border: 2px solid #57a3f5;"><?php echo $chapter['name']; ?></p>
             <?php
                 $id_chapter = $chapter['id'];
                 $allExercise = getRaw("SELECT * FROM exercise_course WHERE chapter_id='$id_chapter'")
@@ -110,11 +110,11 @@ $type = getFlashData('type');
 <div class="detail_course_content_right">
 
     <div class="bg-white border p-3 bra-10">
-        <h3><?php echo $detailCourse['title']; ?></h3>
+        <h3 class="text-primary"><?php echo $detailCourse['title']; ?></h3>
         <br>
-        <p>Loại: <?php echo $course_type; ?></p>
-        <p>Giá khuyễn mãi: <i class="font-weight-bold text-danger"><?php echo !empty($detailCourse['discount'])?$detailCourse['discount']:'0'; ?> VND</i></p>
-        <p>Giá gốc: <i><?php echo $detailCourse['price']; ?> VND</i></p>
+        <p class="text-primary">Loại: <span class="text-warning"><?php echo $course_type; ?></span></p>
+        <p class="text-primary">Giá bìa: <i class=""><span class="text-warning"><?php echo $detailCourse['price']; ?></span> VND</i></p>
+        <p class="text-primary">Giá bán: <span class="text-warning"></span><i class="font-weight-bold text-danger"><?php echo !empty($detailCourse['discount'])?$detailCourse['discount']:$detailCourse['price']; ?> VND</i></p>
         <br>
         <?php if(empty($myCourse)): ?>
         <a href="?module=cart&action=buy_course&id=<?php echo $course_id; ?>" class="btn btn-primary d-block">Mua khóa học</a>
@@ -122,8 +122,7 @@ $type = getFlashData('type');
         <a href="" class="btn btn-success d-block">Khóa học này đã được mua</a>
         <?php endif; ?>
         <br>
-        <p>Chương: <?php echo $numberChapter; ?> chương</p>
-        <p>Bài: chua có data bài</p>
+        <p class="text-primary">Chương: <span class="text-warning"><?php echo $numberChapter; ?></span> chương</p>
     </div>
 
         <br>
@@ -153,7 +152,7 @@ if(!empty($allCourse)):
 ?>   
 
     <div class="bg-white border p-3 bra-10">
-        <h3>Các khóa học cùng loại</h3>
+        <h5>Các khóa học cùng loại</h5>
         <hr>
         <?php foreach ($allCourse as $key => $value): ?>
         <div class="course_kind">
@@ -161,7 +160,7 @@ if(!empty($allCourse)):
             <div class="ml-2">
                 <h6 class="mb-0"><a href="?module=course&action=detail_course&course_id=<?php echo $value['id']; ?>" class="text-decoration-none"><?php echo $value['title']; ?></a></h6>
                 <br>
-                <p class="mb-0">Giá: <?php echo $value['price']; ?> VND</p>
+                <p class="mb-0 text-primary">Giá: <span class="text-warning"><?php echo $value['price']; ?></span> VND</p>
             </div>
         </div>
         <?php endforeach; ?>

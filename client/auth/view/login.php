@@ -98,7 +98,7 @@ $old = getFlashData('old');
 
     <?php getAlert($msg, $type); ?>
 
-    <form action="" method="post" class="">
+    <form action="?module=auth&action=login" method="post" class="">
 
     <hr>
 

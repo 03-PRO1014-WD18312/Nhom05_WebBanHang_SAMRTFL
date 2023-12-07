@@ -17,9 +17,10 @@ if(!empty($body['id'])){
         if($detailBook['quantity'] > 0){
             $detailCart = getRow("SELECT id, quantity FROM cart WHERE user_id='$user_id' AND book_id='$id'");
             if(!empty($detailCart)){
-                if($detailCart['quantity'] >= 10){
-                    setFlashData("msg", "Bạn không thể thêm quá 10 sản phẩm");
-                    setFlashData("type", "danger");
+                // if($detailCart['quantity'] >= 10){
+                if(false){
+                    // setFlashData("msg", "Bạn không thể thêm quá 10 sản phẩm");
+                    // setFlashData("type", "danger");
                 }else{
                     $cart_id = $detailCart['id'];
                     $quantity = $detailCart['quantity']+1;

@@ -21,16 +21,13 @@ if(isLogin() && !empty(getSession('data_book'))){
     redirect("?module=book");
 }
 
-if(is_Post()){
-
-
-
-}
 
 $msg = getFlashData('msg');
 $type = getFlashData('type');
 $errors = getFlashData('errors');
 $old = getFlashData('old');
+
+if(empty($old)) $old = _MY_DATA;
 
 ?>
 
