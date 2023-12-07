@@ -31,5 +31,5 @@ $allMyCourse = getRaw("SELECT c.*, t.name AS 't_name' FROM my_course AS m INNER 
 <?php endforeach; ?>
 </div>
 <?php else: ?>
-    <h4 class="text-danger text-center">Chưa có khóa học nào</h4>
+    <h4 class="text-danger text-center" style="margin: 70px 0;">Chưa có khóa học nào</h4>
 <?php endif; ?>

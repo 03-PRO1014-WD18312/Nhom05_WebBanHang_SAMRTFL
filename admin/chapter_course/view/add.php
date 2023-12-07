@@ -1,6 +1,9 @@
 
 <?php 
 
+$id_group = _MY_DATA['id_group'];
+
+if(empty(!checkPermission($id_group, 'chapter_course', 'add'))):
 
 if(is_Post()){
 
@@ -64,3 +67,5 @@ $old = getFlashData('old');
 <hr>
 
 <a href="?module=course" class="btn btn-success">Danh sách</a>
+
+<?php endif; ?>

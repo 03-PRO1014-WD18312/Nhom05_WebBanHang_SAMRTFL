@@ -1,6 +1,12 @@
 
 <?php 
 
+$id_group = _MY_DATA['id_group'];
+
+if(!empty(checkPermission($id_group, 'exercise_course', 'add'))):
+
+$course_id = getRow("SELECT course_id FROM chapter_course WHERE id='$chapter_id'")['course_id'];
+
 if(is_Post()){
 
     $data = getRequest();
@@ -13,6 +19,11 @@ if(is_Post()){
 
     if(empty($data['video'])){
         $errors['video'] = 'Vui lòng điền thông tin';
+    }else{
+        // $iframe = $data['video'];
+        // if(!preg_match('~^\s*<iframe.+<\/iframe>\s*$~', $iframe)){
+        //     $errors['video'] = 'Dữ liệu phải là nhúng';
+        // }                                                   
     }
 
     if(empty($errors)){
@@ -73,4 +84,6 @@ $old = getFlashData('old');
 
 <hr>
 
-<a href="?module=chapter_course&id=<?php echo $chapter_id ?>" class="btn btn-success">Danh sách</a>
+<a href="?module=chapter_course&id=<?php echo $course_id; ?>" class="btn btn-success">Danh sách</a>
+
+<?php endif; ?>

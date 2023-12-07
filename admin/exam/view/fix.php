@@ -99,7 +99,6 @@ if(is_Post()){
             'time_make' => $data['time_make'],
             'time_end' => $time_end,
             'exam_type_id' => $data['exam_type_id'],
-            // 'description' => $data['description'],
             'price' => $data['price'],
             'update_at' => date('Y-m-d H:i:s'),
         ];
@@ -206,11 +205,6 @@ if(empty($old)) $old = $detailExam
     <?php !empty($errors['price'])?formError($errors['price']):''; ?>
     </div>
 
-    <!-- <div class="form-group col-12">
-    <label for="">Mô tả</label>
-    <textarea name="description" id="" cols="30" rows="10" class="ckediter"><?php echo !empty($old['description'])?$old['description']:''; ?></textarea>
-    <?php !empty($errors['description'])?formError($errors['description']):''; ?>
-    </div> -->
 
     <div class="form-group col-12">
     <input type="submit" value="Sửa" class="form-control btn btn-primary">   

@@ -16,8 +16,12 @@ layout('header', 'client');
 
     view('menu_banner', 'client');
 
+    view('book_hot', 'client');
+
     view('course', 'client');
+
     view('blog', 'client');
+
     ?>
 
 </div>

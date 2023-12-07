@@ -7,7 +7,7 @@ if(empty(checkPermission($id_group, 'group', 'lists'))){
 }
 
 $data = [
-    'titlePage' => 'Nhóm'
+    'titlePage' => 'Cấp bậc'
 ];
 
 layout('header', 'admin', $data);
