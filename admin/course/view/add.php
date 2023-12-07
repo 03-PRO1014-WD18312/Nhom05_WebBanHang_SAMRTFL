@@ -47,7 +47,7 @@ if(is_Post()){
             'price' => $data['price'],
             'course_type_id' => $data['course_type_id'],
             'status' => 0,
-            'author_id' => 1,
+            'author_id' => _MY_DATA['id'],
             'discount' => $data['discount'],
             'learned' => $data['learned'],
             'about' => $data['about'],

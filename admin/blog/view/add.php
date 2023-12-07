@@ -39,7 +39,7 @@ if(!checkPermission($group_id, 'blog', 'add')){
                 'blog_type_id' => $data['blog_type_id'],
                 'content' => $data['content'],
                 'status' => 0,
-                'author_id' => 1,
+                'author_id' => _MY_DATA['id'],
                 'create_at' => date('Y-m-d H:i:s'),
             ];
             if (!empty($_FILES['image']['name'])) {

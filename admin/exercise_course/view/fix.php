@@ -1,6 +1,10 @@
 
 <?php 
 
+$id_group = _MY_DATA['id_group'];
+
+if(!empty(checkPermission($id_group, 'exercise_course', 'fix'))):
+
 $body = getRequest('get');
 
 if(!empty($body['chapter_id']) && !empty($body['id'])){
@@ -29,9 +33,14 @@ if(is_Post()){
     if(empty($data['title'])){
         $errors['title'] = 'Vui lòng điền thông tin';
     }
-
+    
     if(empty($data['video'])){
         $errors['video'] = 'Vui lòng điền thông tin';
+    }else{
+        // $iframe = $data['video'];
+        // if(!preg_match('~^\s*<iframe.+<\/iframe>\s*$~', $iframe)){
+        //     $errors['video'] = 'Dữ liệu phải là nhúng';
+        // }                                                   
     }
 
     if(empty($errors)){
@@ -101,4 +110,6 @@ if(empty($old)){
 <hr>
 <a href="?module=exercise_course&chapter_id=<?php echo $chapter_id; ?>" class="btn btn-success w-100">Thêm</a>
 <hr>
+
+<?php endif; ?>
 

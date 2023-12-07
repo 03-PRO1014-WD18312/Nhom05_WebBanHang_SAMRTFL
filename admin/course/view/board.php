@@ -143,7 +143,7 @@ $type = getFlashData('type');
                 <td class="board_td text-center"><a href="?module=<?php echo $module.'&action=approve&id='.$id; ?>" class="btn btn-<?php echo !empty($status)?'success':'danger'; ?>"><?php echo !empty($status)?'Duyệt':'Chưa duyệt'; ?></a></td>
                 <?php endif; ?>
                 <td class="board_td text-center"><?php echo $price; ?> VND</td>
-                <td class="board_td text-center"><?php echo $discount; ?></td>
+                <td class="board_td text-center"><?php echo $discount; ?> VND</td>
                 <?php if(checkPermission($group_id, 'course', 'fix')): ?>
                 <td class="board_td text-center">
                     <a href="<?php echo '?module='.$module.'&action=fix&id='.$id; ?>" class="btn btn-warning"><i class="fa fa-wrench"></i></a>
@@ -151,7 +151,7 @@ $type = getFlashData('type');
                 <?php endif; ?>
                 <?php if(checkPermission($group_id, 'course', 'delete')): ?>
                 <td class="board_td text-center">
-                    <a href="" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
+                    <a href="?module=course&action=delete&id=<?php echo $id; ?>" onclick="return confirm('bạn có chắc chắc muốn quá không !!!');" class="btn btn-danger"><i class="fa fa-trash-alt "></i></a>
                 </td>
                 <?php endif; ?>
             </tr>

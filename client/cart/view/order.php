@@ -1,6 +1,7 @@
 
 <?php
 
+
 $body = getRequest('get');
 
 $myData = _MY_DATA; 
@@ -14,6 +15,12 @@ $user_id = $myData['id'];
 $detailUser = getRow("SELECT * FROM user WHERE id='$user_id'");
 
 $allCart = getRaw("SELECT * FROM cart WHERE user_id='$user_id'");
+
+if(empty($allCart)){
+    setFlashData('msg', 'Bạn không có đơn hàng nào');
+    setFlashData('type', 'danger');
+    redirect('?module=cart');
+}
 
 $count = 0;
 

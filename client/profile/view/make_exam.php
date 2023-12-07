@@ -29,9 +29,9 @@ getAlert($msg, $type);
 
 <div class="item_course border">
 
-<a href="?module=make_exam&make_exam=<?php echo $value['m_id']; ?>"><img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
+<a href="?module=exam&action=detail_exam&id=<?php echo $value['id']; ?>"><img class="w-100 mx-auto d-block mb-2" src="<?php echo _WEB_HOST_IMAGE_CLIENT.'/'.$value['image']; ?>" alt=""></a>
 
-<h6><a href="?module=make_exam&make_exam=<?php echo $value['m_id']; ?>" class="text-decoration-none"><?php echo $value['title']; ?></a></h6>
+<h6><a href="?module=exam&action=detail_exam&id=<?php echo $value['id']; ?>" class="text-decoration-none"><?php echo $value['title']; ?></a></h6>
 <p></p>
 
 <div class="sub_item_course mt-3">
@@ -50,7 +50,7 @@ getAlert($msg, $type);
 <?php
     else:
 ?>
-    <h2 class="text-center text-danger">Không có dữ liệu</h2>
+    <h2 class="text-center text-danger" style="margin: 70px 0;">Không có dữ liệu</h2>
 <?php
     endif;
 ?>
